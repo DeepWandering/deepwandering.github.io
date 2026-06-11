@@ -1,53 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jiawei Xia</title>
+  <title>Jia-Wei Xia | 个人学术主页</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
-    <nav class="navbar" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="publications.html">Publications</a>
-      <a href="projects.html">Projects</a>
-      <a href="notes.html">Notes</a>
+    <nav class="navbar" aria-label="主导航">
+      <a href="index.html" target="_blank" rel="noopener">主页</a>
+      <a href="research.html" target="_blank" rel="noopener">研究方向</a>
+      <a href="publications.html" target="_blank" rel="noopener">论文</a>
+      <a href="projects.html" target="_blank" rel="noopener">项目</a>
+      <a href="notes.html" target="_blank" rel="noopener">科研笔记</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <h1>Jiawei Xia</h1>
-      <p class="subtitle">Solid Mechanics | Two-Dimensional Materials | Strain Engineering</p>
-      <p>
-        I am interested in the mechanics of two-dimensional materials, periodic
-        buckling of thin films, and strain-induced electronic and topological
-        phenomena in graphene-based systems.
-      </p>
-      <!-- Add assets/profile.jpg later and enable an image here if desired. -->
-      <div class="button-row">
-        <a class="button" href="publications.html">View Publications</a>
-        <a class="button secondary" href="notes.html">Read Notes</a>
+    <section class="hero hero-profile">
+      <div class="hero-copy">
+        <p class="eyebrow">个人学术主页</p>
+        <h1>Jia-Wei Xia</h1>
+        <p class="subtitle">固体力学 | 二维材料 | 应变工程</p>
+        <p class="lead">
+          我关注二维材料力学、薄膜周期性屈曲，以及石墨烯体系中由应变诱导的电子结构与拓扑现象。
+          目前的工作结合连续介质力学、晶格模型和数值模拟，尝试建立可解释、可复现的计算研究流程。
+        </p>
+        <div class="button-row">
+          <a class="button" href="publications.html" target="_blank" rel="noopener">查看论文</a>
+          <a class="button secondary" href="notes.html" target="_blank" rel="noopener">阅读笔记</a>
+        </div>
       </div>
+
+      <aside class="profile-card" aria-label="个人照片占位">
+        <img class="profile-photo" src="assets/figures/personal_avatar.png" alt="个人照片占位图">
+        <p class="photo-caption">Jia-Wei Xia</p>
+      </aside>
     </section>
 
     <section>
-      <h2>Research Interests</h2>
-      <ul>
-        <li>Mechanics of two-dimensional materials</li>
-        <li>Periodic buckling and wrinkling of thin films</li>
-        <li>Strain engineering in graphene-based systems</li>
-        <li>Topological phase transitions in lattice models</li>
-        <li>Multiscale modeling and simulation</li>
+      <h2>研究兴趣</h2>
+      <ul class="interest-list">
+        <li>二维材料的力学行为</li>
+        <li>薄膜的周期性屈曲与起皱</li>
+        <li>石墨烯基体系中的应变工程</li>
+        <li>晶格模型中的拓扑相变</li>
+        <li>多尺度建模与数值模拟</li>
       </ul>
     </section>
 
+    <section class="quick-links">
+      <article class="card">
+        <h2>研究方向</h2>
+        <p>整理主要研究主题、问题背景和方法路线。</p>
+        <a href="research.html" target="_blank" rel="noopener">进入研究方向</a>
+      </article>
+      <article class="card">
+        <h2>科研笔记</h2>
+        <p>记录推导、模型、模拟流程和代码片段。</p>
+        <a href="notes.html" target="_blank" rel="noopener">进入科研笔记</a>
+      </article>
+    </section>
+
     <section>
-      <h2>Contact</h2>
+      <h2>联系方式</h2>
       <p>
-        Email: <span class="muted">to be added</span>
+        邮箱：<span class="muted">jiaweixia@zju.edu.cn</span>
       </p>
     </section>
   </main>

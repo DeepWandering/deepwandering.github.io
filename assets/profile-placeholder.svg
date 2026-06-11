@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900" role="img" aria-labelledby="title desc">
+  <title id="title">个人照片占位图</title>
+  <desc id="desc">用于个人学术主页的简洁头像占位图。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2f6fa"/>
+      <stop offset="1" stop-color="#dbe6ef"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef3f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="900" fill="url(#bg)"/>
+  <circle cx="610" cy="135" r="96" fill="#c8d8e6" opacity="0.55"/>
+  <circle cx="110" cy="760" r="130" fill="#bfd1df" opacity="0.38"/>
+  <rect x="86" y="92" width="548" height="716" rx="34" fill="url(#panel)" stroke="#bfccd8" stroke-width="3"/>
+  <circle cx="360" cy="310" r="108" fill="#8ea4b8"/>
+  <path d="M184 682c18-126 98-204 176-204s158 78 176 204" fill="#6f8599"/>
+  <path d="M225 696h270" stroke="#ffffff" stroke-width="18" stroke-linecap="round" opacity="0.72"/>
+  <text x="360" y="790" fill="#526579" font-family="Arial, Helvetica, sans-serif" font-size="30" text-anchor="middle">个人照片</text>
+</svg>

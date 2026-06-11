@@ -1,65 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects | Jiawei Xia</title>
+  <title>项目 | Jia-Wei Xia</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
-    <nav class="navbar" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="publications.html">Publications</a>
-      <a href="projects.html">Projects</a>
-      <a href="notes.html">Notes</a>
+    <nav class="navbar" aria-label="主导航">
+      <a href="index.html" target="_blank" rel="noopener">主页</a>
+      <a href="research.html" target="_blank" rel="noopener">研究方向</a>
+      <a href="publications.html" target="_blank" rel="noopener">论文</a>
+      <a href="projects.html" target="_blank" rel="noopener">项目</a>
+      <a href="notes.html" target="_blank" rel="noopener">科研笔记</a>
     </nav>
   </header>
 
   <main>
-    <h1>Projects</h1>
+    <h1>项目</h1>
     <p class="lead">
-      Selected computational and modeling directions. The descriptions emphasize
-      methods and workflows rather than finalized claims.
+      这里记录若干建模与计算方向，重点展示方法、工具链和可复现流程，而不夸大尚未定稿的研究结论。
     </p>
 
     <section class="project-grid">
       <article class="project-card">
-        <h2>Graphene Buckling Model</h2>
+        <h2>石墨烯屈曲模型</h2>
         <p>
-          A mechanics model for studying periodic out-of-plane deformation in
-          graphene-based sheets under compression. The workflow is intended to
-          compare energy contributions, characteristic wavelengths, and boundary
-          condition effects.
+          构建用于分析石墨烯基薄片周期性面外形变的力学模型。关注不同能量项、特征波长和边界条件
+          对屈曲形貌的影响。
         </p>
       </article>
 
       <article class="project-card">
-        <h2>Haldane Model Wilson Loop / HWFC</h2>
+        <h2>Haldane 模型 Wilson Loop / HWFC</h2>
         <p>
-          Numerical routines for computing Wilson loops and hybrid Wannier
-          function centers in Haldane-type lattice models. The goal is to track
-          topological changes through robust, reproducible diagnostics.
+          编写用于计算 Wilson loop 和 hybrid Wannier function centers 的数值程序，服务于
+          Haldane 型模型中拓扑相变的判别与可视化。
         </p>
       </article>
 
       <article class="project-card">
-        <h2>LAMMPS Molecular Dynamics Simulation</h2>
+        <h2>LAMMPS 分子动力学模拟</h2>
         <p>
-          Atomistic simulation workflows for relaxed structures and deformation
-          processes in low-dimensional materials. These calculations support
-          comparison between microscopic configurations and continuum mechanics
-          assumptions.
+          使用 LAMMPS 建立低维材料结构弛豫和形变过程的原子尺度模拟流程，用于连接微观构型与连续介质假设。
         </p>
       </article>
 
       <article class="project-card">
-        <h2>ABAQUS Thin-Film Buckling Simulation</h2>
+        <h2>ABAQUS 薄膜屈曲模拟</h2>
         <p>
-          Finite-element models for thin-film buckling and wrinkling under
-          controlled loading. The simulations are useful for testing continuum
-          predictions and studying sensitivity to geometry and constraints.
+          使用有限元方法研究薄膜在受控载荷下的屈曲和起皱行为，并检验几何、约束和材料参数对模式选择的影响。
         </p>
       </article>
     </section>
