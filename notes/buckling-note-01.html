@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Periodic Buckling of Thin Films | Jiawei Xia</title>
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../research.html">Research</a>
+      <a href="../publications.html">Publications</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../notes.html">Notes</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <p class="note-meta">Research note</p>
+      <h1>Periodic Buckling of Thin Films: Basic Energy Balance</h1>
+
+      <section>
+        <h2>Introduction</h2>
+        <p>
+          Periodic buckling is a common deformation mode when a thin film is
+          compressed or coupled to a compliant environment. A useful first model
+          is to compare stretching, bending, and substrate-related energy terms.
+          The total energy can be written schematically as
+          \(E_{\mathrm{tot}} = E_{\mathrm{stretch}} + E_{\mathrm{bend}} + E_{\mathrm{sub}}\).
+        </p>
+      </section>
+
+      <section>
+        <h2>Bending Energy</h2>
+        <p>
+          For a small out-of-plane displacement field \(h(x,y)\), a typical
+          bending energy has the form
+        </p>
+        \[
+        E_{\mathrm{bend}} =
+        \frac{\kappa}{2}
+        \int \left( \nabla^2 h \right)^2 \, dA
+        \]
+        <p>
+          where \(\kappa\) is the bending rigidity. This term penalizes rapid
+          curvature variation and therefore competes with the release of
+          compressive strain energy.
+        </p>
+      </section>
+
+      <section>
+        <h2>Energy Balance</h2>
+        <p>
+          In a minimal scaling picture, a sinusoidal profile can be represented
+          by amplitude \(A\) and wavelength \(\lambda\). A simplified balance may
+          be organized as
+        </p>
+        \[
+        \begin{aligned}
+        E_{\mathrm{tot}}(A,\lambda)
+        &=
+        E_{\mathrm{stretch}}(A,\lambda)
+        + E_{\mathrm{bend}}(A,\lambda)
+        + E_{\mathrm{sub}}(A,\lambda) \\
+        &\approx
+        C_s \varepsilon^2 A_0
+        + C_b \kappa \frac{A^2}{\lambda^4} A_0
+        + C_{\mathrm{sub}} K A^2 A_0 .
+        \end{aligned}
+        \]
+        <p>
+          The constants in this expression depend on the exact geometry and
+          assumptions. The value of the expression is mainly conceptual: it
+          separates the physical mechanisms that control pattern selection.
+        </p>
+      </section>
+
+      <section>
+        <h2>Small Numerical Example</h2>
+        <pre><code class="language-python">import numpy as np
+
+x = np.linspace(0, 2*np.pi, 200)
+h = np.sin(x)
+</code></pre>
+      </section>
+
+      <section>
+        <h2>Figure Placeholder</h2>
+        <p class="muted">
+          A schematic can be added later under <code>assets/figures/</code>.
+        </p>
+        <!--
+        Enable this after the file exists:
+        <img src="../assets/figures/buckling-profile.png" alt="Schematic periodic buckling profile">
+        -->
+      </section>
+    </article>
+  </main>
+</body>
+</html>
