@@ -1,0 +1,280 @@
+---
+title: "磁场作用下狄拉克点电子的Landau能级分布"
+author: "Jiawei Xia"
+date: "2026-06-12"
+execute:
+  eval: false
+---
+
+
+
+
+# 石墨烯的哈密顿量
+
+$$
+\begin{aligned}
+\boldsymbol{\delta}_1 &= \frac{a}{2} \left( \sqrt{3}, 1, 0 \right) \\
+\boldsymbol{\delta}_2 &= \frac{a}{2} \left( -\sqrt{3}, 1, 0 \right) \\
+\boldsymbol{\delta}_3 &= a \left( 0, -1, 0 \right)
+\end{aligned}
+$$
+
+$$
+H = \begin{pmatrix}
+0 & t \sum_{i} e^{i \mathbf{k} \cdot \boldsymbol{\delta}_i} \\
+t \sum_{i} e^{-i \mathbf{k} \cdot \boldsymbol{\delta}_i} & 0
+\end{pmatrix}
+$$
+
+---
+
+# 哈密顿量在狄拉克点的线性化
+
+在狄拉克点，将哈密顿矩阵线性化。令$\boldsymbol{q=k-K}$，$\boldsymbol{K}$是狄拉克点在倒空间的坐标，$\boldsymbol{K}=\left(\frac{4\pi}{3\sqrt{3}a},0,0 \right)$，$\boldsymbol{K^\prime}=\left(\frac{4\pi}{3\sqrt{3}a},0,0 \right)$。在狄拉克点附近，代入$\boldsymbol{k=q+K}$，得到
+
+$$
+H = \left( {\begin{array}{*{20}{c}}
+0&{t\sum\limits_i {{e^{i\left( {\boldsymbol{q} + \boldsymbol{K}} \right){\boldsymbol{\delta }_i}}}} }\\
+{t\sum\limits_i {{e^{ - i\left( {\boldsymbol{q} + \boldsymbol{K}} \right){\boldsymbol{\delta }_i}}}} }&0
+\end{array}} \right) = \left( {\begin{array}{*{20}{c}}
+0&{t\sum\limits_i {{e^{i\boldsymbol{q}{\boldsymbol{\delta }_i}}}{e^{i\boldsymbol{K}{\boldsymbol{\delta }_i}}}} }\\
+{t\sum\limits_i {{e^{ - i\boldsymbol{q}{\boldsymbol{\delta }_i}}}{e^{ - i\boldsymbol{K}{\boldsymbol{\delta }_i}}}} }&0
+\end{array}} \right).
+$$
+
+
+在$q=0$处对$q$泰勒展开，
+$$
+H \approx \left( {\begin{array}{*{20}{c}}
+0&{t\sum\limits_i {\left( {1 + i\boldsymbol{q}{\boldsymbol{\delta }_i}} \right){e^{i\boldsymbol{K}{\boldsymbol{\delta }_i}}}} }\\
+{t\sum\limits_i {\left( {1 - i\boldsymbol{q}{\boldsymbol{\delta }_i}} \right){e^{ - i\boldsymbol{K}{\boldsymbol{\delta }_i}}}} }&0
+\end{array}} \right) =  - \frac{{3ta}}{2}\left( {\begin{array}{*{20}{c}}
+0&{{q_x} + i{q_y}}\\
+{{q_x} - i{q_y}}&0
+\end{array}} \right)
+$$
+
+可求得能量的本征值为，
+
+$$E = \pm v_F \hbar |\mathbf{q}|$$
+
+由上式可得 ：
+
+
+$$\mathbf{q} = \frac{E}{\pm v_F \hbar}$$
+
+于是，可将哈密顿量表示为泡利矩阵的形式 ：
+
+
+$$H = v_F \hbar (\sigma_x q_x + \sigma_y q_y)$$
+
+其中 ：
+
+
+$$\sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad \sigma_y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}$$
+
+在 $\mathbf{K}$ 点附近，可以得到线性化的哈密顿量 ，可写为 ：
+
+
+$$H = v_F (\sigma_x p_x + \sigma_y p_y)$$
+
+或写为 ：
+
+
+$$H = v_F \boldsymbol{\sigma} \cdot \mathbf{p}$$
+
+其中，$\mathbf{p} = -i\hbar \nabla$ ，$v_F$ 为费米速度 。
+
+---
+
+# 最小耦合原则
+
+> 
+> **思考问题**：为什么磁场的影响表达为 $\mathbf{p} \to \mathbf{p} - e\mathbf{A}$？ ※（详细推导附在文末）
+> 
+> 
+
+施加磁场 $\mathbf{B}$ ，$\mathbf{B} = \nabla \times \mathbf{A}$ ，$\mathbf{A}$ 为磁矢势（磁势），$\mathbf{A}$ 取朗道规范 。
+选取 $\mathbf{A} = (0, Bx, 0)$ ，则 $\mathbf{B} = (0, 0, B)$ 。
+磁场对电子动量的影响，或者表示为对波矢的影响：$\mathbf{k} \to \mathbf{k} - \frac{e}{\hbar}\mathbf{A}$ 。
+
+---
+
+# 能量本征值的求解
+
+加入磁场后的薛定谔方程（$H$ 线性化后）写为 ：
+
+
+$$v_F \boldsymbol{\sigma} \cdot (\mathbf{p} - e\mathbf{A}) \psi = E \psi$$
+
+可以得到两个耦合方程 ：
+
+
+$$\begin{cases}
+v_F [ (p_x - eA_x) - i(p_y - eA_y) ] \psi_B = E \psi_A \\
+v_F [ (p_x - eA_x) + i(p_y - eA_y) ] \psi_A = E \psi_B
+\end{cases}$$
+
+用 $\Pi$ 表示动量算符 ，当 $E \neq 0$ 时 ，将上式的第二式变为 ：
+
+
+$$\psi_B = \frac{v_F}{E} [ (p_x - eA_x) + i(p_y - eA_y) ] \psi_A$$
+
+代入第一个式子，得到 ：
+
+
+$$\frac{v_F^2}{E} [ (p_x - eA_x) - i(p_y - eA_y) ] [ (p_x - eA_x) + i(p_y - eA_y) ] \psi_A = E \psi_A$$
+
+化为 ：
+
+
+$$v_F^2 \left[ (p_x - eA_x)^2 + (p_y - eA_y)^2 + i(p_x - eA_x)(p_y - eA_y) - i(p_y - eA_y)(p_x - eA_x) \right] \psi_A = E^2 \psi_A$$
+
+考虑到坐标算符与动量算符的对易关系 $[x, p_x] = i\hbar$，于是上式化为 ：
+
+
+$$\left[ \Pi_x^2 + \Pi_y^2 - e\hbar B \right] \psi_A = \frac{E^2}{v_F^2} \psi_A$$
+
+其中，动量算符 $\Pi_x = p_x - eA_x = p_x$ ，$\Pi_y = p_y - eA_y = p_y - eBx$ 。
+
+此外，波函数可以写为 ：
+
+
+$$\psi_A(x,y) = e^{ik_y y} \phi_A(x)$$
+
+> 
+> **思考问题**：这一步是为什么？ ※（是因为哈密顿量中不显含 $y$，所以在 $y$ 方向具有平移周期性？）
+> 
+> 
+
+代入薛定谔方程 ，算符分别作用于波函数 ：
+
+
+$$\left[ p_x^2 + (\hbar k_y - eBx)^2 - e\hbar B \right] \phi_A(x) = \frac{E^2}{v_F^2} \phi_A(x)$$
+
+移项得到 ：
+
+
+$$\left[ -\hbar^2 \frac{d^2}{dx^2} + e^2 B^2 \left( x - \frac{\hbar k_y}{eB} \right)^2 \right] \phi_A(x) = \left( \frac{E^2}{v_F^2} + e\hbar B \right) \phi_A(x)$$
+
+这可以对照**标准谐振子方程** （这是如何得到的？ ※ 参见附录已解决部分）。
+进行变量代换 ：
+
+
+$$\xi = \lambda (x - x_0)$$
+
+其中，$x_0$ 的选择依据是 $x_0 = \frac{\hbar k_y}{eB}$ ，$\lambda$ 的选择依据是 $\lambda = \sqrt{\frac{eB}{\hbar}}$ 。
+
+将 $\xi$ 代入方程，在此之前，写出 $\xi$ 与 $x$ 的微分关系为 $\frac{d}{dx} = \lambda \frac{d}{d\xi}$ ，得：
+
+
+$$\left[ -\hbar^2 \lambda^2 \frac{d^2}{d\xi^2} + e^2 B^2 \frac{\xi^2}{\lambda^2} \right] \phi_A(\xi) = \left( \frac{E^2}{v_F^2} + e\hbar B \right) \phi_A(\xi)$$
+
+对照标准谐振子方程的各项系数，可得 ：
+
+
+$$-\frac{d^2}{d\xi^2} \phi_A + \xi^2 \phi_A = \frac{\frac{E^2}{v_F^2} + e\hbar B}{\hbar^2 \lambda^2} \phi_A$$
+
+所以有 ：
+
+
+$$\hbar^2 \lambda^2 = \frac{e^2 B^2}{\lambda^2}$$
+
+解得 $\lambda = \sqrt{\frac{eB}{\hbar}}$ 。因此变量替换为 $\xi = \sqrt{\frac{eB}{\hbar}}\left(x - \frac{\hbar k_y}{eB}\right)$ 。
+
+标准谐振子方程的解为：$\mathcal{E}_n = 2n + 1$（$n$ 为朗道能级的量子数），所以有：
+
+
+$$\frac{\frac{E^2}{v_F^2} + e\hbar B}{\hbar^2 \lambda^2} = 2n + 1$$
+
+可以写为 ：
+
+
+$$E_n^A = \pm v_F \sqrt{2n e\hbar B}$$
+
+其中 $n = 0, 1, 2, \dots$ 
+
+---
+
+如果选用亚晶格 $\psi_B$ 表示，则根据对易关系，方程将变为 ：
+
+
+$$\left[ \Pi_x^2 + \Pi_y^2 + e\hbar B \right] \psi_B = \frac{E^2}{v_F^2} \psi_B$$
+
+则方程变为 ：
+
+
+$$\frac{\frac{E^2}{v_F^2} - e\hbar B}{\hbar^2 \lambda^2} = 2n + 1$$
+
+解得 ：
+
+
+$$E_n^B = \pm v_F \sqrt{2(n+1) e\hbar B}$$
+
+能量本征值为 ：
+
+
+$$E_n^B = \pm v_F \sqrt{2n e\hbar B}$$
+
+可以写为 ：
+
+$$E_n^B = \pm \hbar \omega_c \sqrt{n}$$
+
+其中 $n = 1, 2, 3, \dots$ 
+
+**物理结论与分析**：
+$E_n^A$ 为亚晶格 A 原子的能量本征值 ，$E_n^B$ 为亚晶格 B 原子的能量本征值 。对比可以发现，**A 原子有零能级（$n=0$），而 B 原子没有该能级** 。在局域态密度（LDOS）图上表现为：A 原子的 LDOS 曲线在 $E=0\text{ eV}$ 处有峰值，而 B 原子的 LDOS 曲线在该处为零 ；在大于零的能级，A 原子和 B 原子均能取到，并且 A 的第 $n$ 个能级与 B 原子的第 $n-1$ 个能级重合 。
+
+---
+
+## 另一个推导版本
+
+不同的规范并不会影响物理本质，这里同样采用**朗道规范** 。将磁场下的动量记为 $\boldsymbol{\Pi} = \mathbf{p} - e\mathbf{A}$ 。
+（赝）磁场下的 $\mathbf{K}$ 谷狄拉克方程为 ：
+
+$$v_F (\sigma_x \Pi_x + \sigma_y \Pi_y) \psi = E \psi$$
+
+利用本征方程的特点，对哈密顿量进行平方，实现两个波函数的解耦 ：
+
+$$H^2 \psi = v_F^2 (\sigma_x \Pi_x + \sigma_y \Pi_y)^2 \psi = E^2 \psi$$
+
+需要注意的是，**坐标算符与动量算符是不对易的** ，这也是后续出现**赝自旋极化**的根本原因 。
+
+以 $\psi_A$ 为例，代入对易关系，方程化为 ：
+
+$$\left[ \Pi_x^2 + \Pi_y^2 - e\hbar B \right] \psi_A = \frac{E^2}{v_F^2} \psi_A$$
+
+在该朗道规范下，哈密顿量中不显含 $y$ ，波函数可以取特定的形式 ：
+
+$$\psi_A(x,y) = e^{ik_y y} \phi_A(x)$$
+
+代入并化简，对照**标准谐振子方程** ，可以得到 ：
+
+$$\left[ -\frac{d^2}{d\xi^2} + \xi^2 \right] \phi_A = \frac{\frac{E^2}{v_F^2} + e\hbar B}{e\hbar B} \phi_A$$
+
+标准谐振子方程的解为：$\mathcal{E}_n = 2n + 1$（$n$ 为朗道能级的量子数），所以有：
+
+$$\frac{\frac{E^2}{v_F^2} + e\hbar B}{e\hbar B} = 2n + 1$$
+
+解得朗道能级 ：
+
+$$E_n^A = \pm v_F \sqrt{2n e\hbar B} \quad (n=0,1,2,\dots)$$
+
+对于 $\psi_B$，则根据对易关系，方程将变为 ：
+
+$$\left[ \Pi_x^2 + \Pi_y^2 + e\hbar B \right] \psi_B = \frac{E^2}{v_F^2} \psi_B$$
+
+则变量代换后，朗道能级可以写为 ：
+
+$$E_n^B = \pm v_F \sqrt{2n e\hbar B} \quad (n=1,2,3,\dots)$$
+
+**谷极化与赝磁场物理分析**：
+可以发现，在 $\mathbf{K}$ 谷的应变诱导的**赝磁场**中，$n=0$ 能级仅由亚晶格 A 的赝自旋态占据 。$n \neq 0$ 的能级则由两个赝自旋态共同占据 。
+
+* 
+**在真实磁场的作用下**：$\mathbf{K}$ 谷的磁场方向与 $\mathbf{K}'$ 谷一致 。但由于两个谷的手性关系，$\mathbf{K}'$ 谷的哈密顿量中对角线项互换 ，这意味着在后续的求解中，$\psi_A$ 和 $\psi_B$ 的角色发生调换 ，即 $\mathbf{K}'$ 谷的 $n=0$ 能级仅由亚晶格 B 的赝自旋态占据 。因此在两个谷中，$n=0$ 的朗道能级分别由 A 和 B 占据，**在宏观上将不会表现出极化** 。
+
+
+* 
+**在应变产生的赝磁场作用下**：虽然手性关系仍然存在 ，但由于 $\mathbf{K}'$ 谷的赝磁场方向与 $\mathbf{K}$ 谷相反（$\mathbf{B}_{\mathbf{K}'} = -\mathbf{B}_{\mathbf{K}}$） ，这使得对易关系的正负号再次发生反转 。也就是说，角色和正负号经历了两次调换，导致最终结果与 $\mathbf{K}$ 谷的情况完全一致 。这意味着 $\mathbf{K}'$ 谷的 $n=0$ 能级也由亚晶格 A 占领，从而**出现了宏观的赝自旋极化** 。
+

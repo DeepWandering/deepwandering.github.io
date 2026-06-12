@@ -1,0 +1,38 @@
+---
+title: "笔记标题"
+author: "Jiawei Xia"
+date: "YYYY-MM-DD"
+execute:
+  eval: false
+---
+
+# 引言
+
+这里写研究背景、问题定义和本文记号。目录、编号、代码块、公式、主站导航栏和主站 CSS 会从 `notes/_metadata.yml` 自动继承。
+
+行内公式示例：$E = mc^2$。
+
+显示公式示例：
+
+$$
+H =
+\sum_{\langle i,j\rangle}
+t_{ij} c_i^\dagger c_j .
+$$
+
+# 代码示例
+
+```python
+import numpy as np
+
+x = np.linspace(0, 1, 100)
+print(x[:3])
+```
+
+# 图片示例
+
+将图片放在当前笔记附近的相对路径中，例如 `notes/figures/example.png`，再按下面方式引用。
+
+<!--
+![图片说明](figures/example.png)
+-->

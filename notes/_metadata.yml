@@ -1,0 +1,13 @@
+lang: zh-CN
+format:
+  html:
+    toc: true
+    toc-location: body
+    toc-depth: 3
+    number-sections: false
+    code-fold: false
+    theme: cosmo
+    css: ../style.css
+    include-before-body: ../_includes/nav-notes.html
+execute:
+  eval: false
