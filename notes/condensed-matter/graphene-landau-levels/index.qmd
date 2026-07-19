@@ -2,6 +2,12 @@
 title: "磁场作用下狄拉克点电子的Landau能级分布"
 author: "Jiawei Xia"
 date: "2026-06-12"
+categories:
+  - 凝聚态物理
+  - 石墨烯
+tags:
+  - Landau level
+  - Dirac fermion
 execute:
   eval: false
 ---

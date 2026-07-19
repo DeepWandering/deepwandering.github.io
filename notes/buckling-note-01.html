@@ -3,105 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>薄膜周期性屈曲 | Jia-Wei Xia</title>
-  <link rel="stylesheet" href="../style.css">
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['\\(', '\\)']],
-        displayMath: [['\\[', '\\]']]
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-  </script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <meta http-equiv="refresh" content="0; url=/notes/mechanics/periodic-thin-film-buckling/">
+  <link rel="canonical" href="/notes/mechanics/periodic-thin-film-buckling/">
+  <title>页面已迁移</title>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="navbar" aria-label="主导航">
-      <a href="../index.html" target="_self" rel="noopener">主页</a>
-      <a href="../research.html" target="_self" rel="noopener">研究方向</a>
-      <a href="../publications.html" target="_self" rel="noopener">论文</a>
-      <a href="../projects.html" target="_self" rel="noopener">项目</a>
-      <a href="../notes.html" target="_self" rel="noopener">科研笔记</a>
-    </nav>
-  </header>
-
-  <main>
-    <article>
-      <p class="note-meta">科研笔记</p>
-      <h1>薄膜周期性屈曲：基本能量平衡</h1>
-
-      <section>
-        <h2>引言</h2>
-        <p>
-          当薄膜受到压缩或与柔性环境耦合时，周期性屈曲是一类常见的形变模式。一个基础模型是比较
-          拉伸能、弯曲能和基底相关能量项。总能量可写成
-          \(E_{\mathrm{tot}} = E_{\mathrm{stretch}} + E_{\mathrm{bend}} + E_{\mathrm{sub}}\)。
-        </p>
-      </section>
-
-      <section>
-        <h2>弯曲能</h2>
-        <p>
-          对于小的面外位移场 \(h(x,y)\)，典型弯曲能可表示为
-        </p>
-        \[
-        E_{\mathrm{bend}} =
-        \frac{\kappa}{2}
-        \int \left( \nabla^2 h \right)^2 \, dA
-        \]
-        <p>
-          其中 \(\kappa\) 为弯曲刚度。该项惩罚快速变化的曲率，并与压缩应变能释放形成竞争。
-        </p>
-      </section>
-
-      <section>
-        <h2>能量平衡</h2>
-        <p>
-          在一个最小尺度分析中，正弦形貌可由幅值 \(A\) 和波长 \(\lambda\) 表征。简化能量平衡可整理为
-        </p>
-        \[
-        \begin{aligned}
-        E_{\mathrm{tot}}(A,\lambda)
-        &=
-        E_{\mathrm{stretch}}(A,\lambda)
-        + E_{\mathrm{bend}}(A,\lambda)
-        + E_{\mathrm{sub}}(A,\lambda) \\
-        &\approx
-        C_s \varepsilon^2 A_0
-        + C_b \kappa \frac{A^2}{\lambda^4} A_0
-        + C_{\mathrm{sub}} K A^2 A_0 .
-        \end{aligned}
-        \]
-        <p>
-          其中各常数依赖具体几何和建模假设。该表达式的主要价值在于区分不同物理机制，
-          从而帮助理解图案选择。
-        </p>
-      </section>
-
-      <section>
-        <h2>简单数值示例</h2>
-        <pre><code class="language-python">import numpy as np
-
-x = np.linspace(0, 2*np.pi, 200)
-h = np.sin(x)
-</code></pre>
-      </section>
-
-      <section>
-        <h2>图片占位说明</h2>
-        <p class="muted">
-          后续可在 <code>assets/figures/</code> 下加入屈曲形貌示意图。
-        </p>
-        <!--
-        图片文件存在后再启用：
-        <img src="../assets/figures/buckling-profile.png" alt="周期性屈曲形貌示意图">
-        -->
-      </section>
-    </article>
-  </main>
+  <p>页面已迁移至<a href="/notes/mechanics/periodic-thin-film-buckling/">新的笔记地址</a>。</p>
 </body>
 </html>

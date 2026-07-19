@@ -7,7 +7,9 @@ format:
     number-sections: false
     code-fold: false
     theme: cosmo
-    css: ../style.css
+    css: /style.css
     include-before-body: ../_includes/nav-notes.html
 execute:
   eval: false
+filters:
+  - _filters/sync-pagetitle.lua

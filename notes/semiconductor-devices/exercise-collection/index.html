@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jiawei Xia">
+<meta name="description" content="半导体能带、有效质量、态密度、费米分布与本征载流子统计习题及参考解答。">
+
+<title>半导体器件基础习题册（一）</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap-67270d1595a62d14f123c043d4fb2f18.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content" id="quarto-document-content">
+<header class="site-header">
+  <nav class="navbar" aria-label="主导航">
+    <a href="/index.html" target="_self" rel="noopener">主页</a>
+    <a href="/research.html" target="_self" rel="noopener">研究方向</a>
+    <a href="/publications.html" target="_self" rel="noopener">论文</a>
+    <a href="/projects.html" target="_self" rel="noopener">项目</a>
+    <a href="/notes.html" target="_self" rel="noopener">科研笔记</a>
+  </nav>
+</header>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">半导体器件基础习题册（一）</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">半导体器件</div>
+    <div class="quarto-category">半导体物理</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    半导体能带、有效质量、态密度、费米分布与本征载流子统计习题及参考解答。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jiawei Xia </p>
+          </div>
+  </div>
+
+    <div>
+    <div class="quarto-title-meta-heading">发布于</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026年7月19日</p>
+    </div>
+  </div>
+
+
+  </div>
+
+
+
+</header>
+
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">目录</h2>
+
+  <ul>
+  <li><a href="#本套习题覆盖范围" id="toc-本套习题覆盖范围">本套习题覆盖范围</a></li>
+  <li><a href="#学习目标" id="toc-学习目标">学习目标</a></li>
+  <li><a href="#前置知识" id="toc-前置知识">前置知识</a>
+  <ul>
+  <li><a href="#本套通用物理常数" id="toc-本套通用物理常数">本套通用物理常数</a></li>
+  </ul></li>
+  <li><a href="#习题正文" id="toc-习题正文">习题正文</a>
+  <ul>
+  <li><a href="#第一层基本概念与直接应用" id="toc-第一层基本概念与直接应用">第一层：基本概念与直接应用</a>
+  <ul>
+  <li><a href="#sd-01-001能带曲率与有效质量" id="toc-sd-01-001能带曲率与有效质量">SD-01-001｜能带曲率与有效质量</a></li>
+  <li><a href="#sd-01-002由色散关系测定有效质量" id="toc-sd-01-002由色散关系测定有效质量">SD-01-002｜由色散关系测定有效质量</a></li>
+  <li><a href="#sd-01-003空穴描述的建立" id="toc-sd-01-003空穴描述的建立">SD-01-003｜空穴描述的建立</a></li>
+  <li><a href="#sd-01-004六个常见表述的判断与纠错" id="toc-sd-01-004六个常见表述的判断与纠错">SD-01-004｜六个常见表述的判断与纠错</a></li>
+  </ul></li>
+  <li><a href="#第二层概念联系与标准分析" id="toc-第二层概念联系与标准分析">第二层：概念联系与标准分析</a>
+  <ul>
+  <li><a href="#sd-01-005直接带隙与间接带隙的能带图" id="toc-sd-01-005直接带隙与间接带隙的能带图">SD-01-005｜直接带隙与间接带隙的能带图</a></li>
+  <li><a href="#sd-01-006两种材料的光学跃迁比较" id="toc-sd-01-006两种材料的光学跃迁比较">SD-01-006｜两种材料的光学跃迁比较</a></li>
+  <li><a href="#sd-01-007三维抛物线能带的态密度推导" id="toc-sd-01-007三维抛物线能带的态密度推导">SD-01-007｜三维抛物线能带的态密度推导</a></li>
+  <li><a href="#sd-01-008有限体积样品中的可用状态数" id="toc-sd-01-008有限体积样品中的可用状态数">SD-01-008｜有限体积样品中的可用状态数</a></li>
+  <li><a href="#sd-01-009椭球能谷与多能谷态密度" id="toc-sd-01-009椭球能谷与多能谷态密度">SD-01-009｜椭球能谷与多能谷态密度</a></li>
+  <li><a href="#sd-01-010费米分布的数值特征" id="toc-sd-01-010费米分布的数值特征">SD-01-010｜费米分布的数值特征</a></li>
+  </ul></li>
+  <li><a href="#第三层载流子统计近似条件与本征半导体" id="toc-第三层载流子统计近似条件与本征半导体">第三层：载流子统计、近似条件与本征半导体</a>
+  <ul>
+  <li><a href="#sd-01-011玻尔兹曼近似的误差" id="toc-sd-01-011玻尔兹曼近似的误差">SD-01-011｜玻尔兹曼近似的误差</a></li>
+  <li><a href="#sd-01-012从态密度积分到载流子浓度" id="toc-sd-01-012从态密度积分到载流子浓度">SD-01-012｜从态密度积分到载流子浓度</a></li>
+  <li><a href="#sd-01-013本征费米能级为什么不一定在禁带正中央" id="toc-sd-01-013本征费米能级为什么不一定在禁带正中央">SD-01-013｜本征费米能级为什么不一定在禁带正中央</a></li>
+  <li><a href="#sd-01-014硅的本征载流子浓度与本征费米能级" id="toc-sd-01-014硅的本征载流子浓度与本征费米能级">SD-01-014｜硅的本征载流子浓度与本征费米能级</a></li>
+  <li><a href="#sd-01-015温度对本征载流子浓度的竞争影响" id="toc-sd-01-015温度对本征载流子浓度的竞争影响">SD-01-015｜温度对本征载流子浓度的竞争影响</a></li>
+  </ul></li>
+  <li><a href="#第四层跨领域拓展" id="toc-第四层跨领域拓展">第四层：跨领域拓展</a>
+  <ul>
+  <li><a href="#sd-01-016从三维半导体到二维材料的态密度" id="toc-sd-01-016从三维半导体到二维材料的态密度">SD-01-016｜从三维半导体到二维材料的态密度</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#题目覆盖检查表" id="toc-题目覆盖检查表">题目覆盖检查表</a></li>
+  </ul>
+</nav>
+<div class="callout callout-style-simple callout-note callout-titled" title="习题册信息">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">注记</span>习题册信息
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>模块编号：</strong> SD-01</li>
+<li><strong>对应进度：</strong> NPTEL Fundamentals of Semiconductor Devices，Lectures 1–6</li>
+<li><strong>题目数量：</strong> 16 题</li>
+</ul>
+</div>
+</div>
+<p>本套习题涉及能带基础、有效质量、空穴、直接与间接带隙、态密度、费米分布和本征载流子浓度，不涉及掺杂及非本征半导体。NPTEL 官方课程将能带物理与载流子统计作为后续输运和器件学习的基础。<a href="https://nptel.ac.in/courses/108108122">nptel.ac.in</a></p>
+<section id="本套习题覆盖范围" class="level1">
+<h1>本套习题覆盖范围</h1>
+<ul>
+<li><p><span class="math inline">\(E-k\)</span> 色散关系与有效质量</p></li>
+<li><p>导带底、价带顶附近的抛物线近似</p></li>
+<li><p>电子与空穴的等效描述</p></li>
+<li><p>直接带隙与间接带隙</p></li>
+<li><p>三维体材料的态密度</p></li>
+<li><p>多能谷与态密度有效质量</p></li>
+<li><p>费米–狄拉克分布</p></li>
+<li><p>玻尔兹曼近似及其适用条件</p></li>
+<li><p>导带电子浓度与价带空穴浓度</p></li>
+<li><p>本征费米能级与本征载流子浓度</p></li>
+<li><p>温度对载流子浓度的影响</p></li>
+<li><p>二维材料态密度的拓展比较</p></li>
+</ul>
+</section>
+<section id="学习目标" class="level1">
+<h1>学习目标</h1>
+<p>完成本套习题后，应能够：</p>
+<ol type="1">
+<li><p>从能带曲率判断载流子的有效质量及其符号；</p></li>
+<li><p>理解为何价带中的大量电子可以等效描述为少量空穴；</p></li>
+<li><p>从能量和晶体动量守恒角度区分直接与间接带隙；</p></li>
+<li><p>从 <span class="math inline">\(k\)</span> 空间状态计数推导三维态密度；</p></li>
+<li><p>将态密度与费米分布结合，建立载流子浓度的积分表达；</p></li>
+<li><p>判断玻尔兹曼近似的适用范围；</p></li>
+<li><p>推导并计算本征载流子浓度和本征费米能级；</p></li>
+<li><p>分析有效质量、带隙和温度对本征载流子统计的影响；</p></li>
+<li><p>初步理解三维体材料与二维材料态密度的区别。</p></li>
+</ol>
+</section>
+<section id="前置知识" class="level1">
+<h1>前置知识</h1>
+<ul>
+<li><p>晶体中的允许能带与禁带</p></li>
+<li><p>波矢 <span class="math inline">\(k\)</span> 和 <span class="math inline">\(E-k\)</span> 色散关系</p></li>
+<li><p>基本微积分与高斯积分</p></li>
+<li><p>指数函数和数量级计算</p></li>
+<li><p>费米–狄拉克分布的基本定义</p></li>
+</ul>
+<section id="本套通用物理常数" class="level2">
+<h2 class="anchored" data-anchor-id="本套通用物理常数">本套通用物理常数</h2>
+<p>无特别说明下，数值题中相关参数采用：</p>
+<p><span class="math display">\[
+\begin{aligned}
+q &amp; = 1.602 \times 10^{- 19}\,\mathrm{C}, \\
+m_{0} &amp; = 9.109 \times 10^{- 31}\,\mathrm{kg}, \\
+\hbar &amp; = 1.055 \times 10^{- 34}\,\mathrm{J}\cdot\mathrm{s}, \\
+k_{B} &amp; = 1.381 \times 10^{- 23}\,\mathrm{J}\cdot\mathrm{K}^{- 1} = 8.617 \times 10^{- 5}\,\mathrm{eV}\cdot\mathrm{K}^{- 1}, \\
+1\,\mathrm{eV} &amp; = 1.602 \times 10^{- 19}\,\mathrm{J}, \\
+1\,\mathring{\mathrm{A}} &amp; = 0.1\,\mathrm{nm} = 1 \times 10^{- 10}\,\mathrm{m}
+\end{aligned}
+\]</span></p>
+</section>
+</section>
+<section id="习题正文" class="level1">
+<h1>习题正文</h1>
+<section id="第一层基本概念与直接应用" class="level2">
+<h2 class="anchored" data-anchor-id="第一层基本概念与直接应用">第一层：基本概念与直接应用</h2>
+<section id="sd-01-001能带曲率与有效质量" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-001能带曲率与有效质量">SD-01-001｜能带曲率与有效质量</h3>
+<ul>
+<li><p><strong>知识点：</strong> 有效质量、<span class="math inline">\(E - k\)</span>关系、能带曲率</p></li>
+<li><p><strong>题型：</strong> 基础概念辨析题</p></li>
+<li><p><strong>难度：</strong> ★</p></li>
+<li><p><strong>来源：</strong> 经典教材改编；Streetman 与 Banerjee，主题：能带中的电子运动</p></li>
+<li><p><strong>建议用时：</strong> 10分钟</p></li>
+</ul>
+<section id="题目" class="level4">
+<h4 class="anchored" data-anchor-id="题目">题目</h4>
+<p>某一维晶体中存在以下三个局域能带：</p>
+<p><span class="math inline">\(E_{A}(k) = E_{A}^{0} + \alpha\ k^{2}\)</span>,</p>
+<p><span class="math inline">\(E_{B}(k) = E_{B}^{0} + 4\alpha\ k^{2}\)</span>,</p>
+<p><span class="math inline">\(E_{C}(k) = E_{C}^{0} - \alpha\ k^{2}\)</span>,</p>
+<p>其中 (<span class="math inline">\(\alpha &gt; 0\)</span>)。</p>
+<p>回答下列问题：</p>
+<ol type="1">
+<li><p>判断三个能带在<span class="math inline">\(k = 0\)</span>附近是能带极小值/极大值。</p></li>
+<li><p>比较 A、B、C 三个能带中载流子有效质量绝对值的大小。</p></li>
+<li><p>判断三个能带对应的电子有效质量是正还是负。</p></li>
+<li><p>说明”能带越平坦，有效质量越大”这一表述的准确含义。</p></li>
+<li><p>有效质量较大是否意味着电子的静止质量发生了改变？说明理由。</p></li>
+</ol>
+</section>
+<section id="参考解答" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答">参考解答</h4>
+<p><strong>1.</strong> 抛物线开口向上则为最小值，向下则为最大值。三者依次为：最小值、最小值、最大值</p>
+<p><strong>2.</strong> 有效质量的定义<span class="math inline">\(m^{*} = \hbar^{2}\left( \frac{d^{2}E}{dk^{2}} \right)^{- 1}\)</span></p>
+<p><span class="math display">\[
+\left| m_{A}^{*} \right| = \frac{\hbar^{2}}{2\alpha}
+\]</span></p>
+<p><span class="math display">\[
+\left| m_{B}^{*} \right| = \frac{\hbar^{2}}{8\alpha}
+\]</span></p>
+<p><span class="math display">\[
+\left| m_{C}^{*} \right| = \frac{\hbar^{2}}{2\alpha}
+\]</span></p>
+<p>有效质量绝对值关系为</p>
+<p><span class="math display">\[
+\left| m_{A}^{*} \right| = \left| m_{C}^{*} \right| &gt; \left| m_{B}^{*} \right|
+\]</span></p>
+<p>补充：有效质量的半经典推导</p>
+<p><span class="math display">\[
+v = \frac{1}{\hbar}\frac{dE}{dk},\quad\quad\hbar\frac{dk}{dt} = F,
+\]</span></p>
+<p>故</p>
+<p><span class="math display">\[
+a = \frac{dv}{dt} = \frac{1}{\hbar^{2}}\frac{d^{2}E}{dk^{2}}F
+\]</span></p>
+<p>定义<span class="math inline">\(F = m^{*}a\)</span>，得到</p>
+<p><span class="math display">\[
+m^{*} = \hbar^{2}\left( \frac{d^{2}E}{dk^{2}} \right)^{- 1}
+\]</span></p>
+<p>结合曲率公式</p>
+<p><span class="math display">\[
+\rho = \frac{f^{''}(x)}{\left\lbrack 1 + \left( f'(x) \right)^{2} \right\rbrack^{3/2}},
+\]</span></p>
+<p>当处于抛物线底部/顶部时，一阶导近似为零，则<span class="math inline">\(\rho \approx f^{''}(x)\)</span>。因此，在低能时，可认为<strong>有效质量与能带曲率的</strong>成反比。</p>
+<p><strong>3.</strong> 通过能带开口方向判断有效质量的符号，开口向上为正，向下为负</p>
+<p><strong>4.</strong> 可从两种角度理解</p>
+<p>1） 在能带极值点附近，有效质量与能带曲率成反比。能带越平坦，则曲率越小，有效质量越大；反之亦然</p>
+<p>2） 能带的斜率反映群速度大小，能带越平坦，则群速度越小，这意味着电子的移动更困难，反映其惯性（即有效质量）越大。</p>
+<p><strong>5.</strong> 否</p>
+<p>静止质量描述的是电子在真空中受到外力时，其加速度与外力的关系。而有效质量描述的是电子在周期性势场中，加速度与外力的关系，其本质是对电子量子效应的封装。电子在晶格中运动，会受到周期性势场的作用，电子的准动量与能量表现出特有的能带结构。对能带曲线进行量子力学推导，可使晶格内部的作用力被量化。具体而言，将能带对波矢的二阶导数（即能带曲率）定义为有效质量，可以将周期性势场的作用封装进这个等效系数。从而在形式上，使得外力与加速度的关系回到经典的牛顿第二定律的形式。</p>
+<p>综上，有效质量不等同于电子的真实静止质量，其反映了周期性势场对电子的作用。</p>
+</section>
+</section>
+<section id="sd-01-002由色散关系测定有效质量" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-002由色散关系测定有效质量">SD-01-002｜由色散关系测定有效质量</h3>
+<ul>
+<li><p><strong>知识点：</strong> 抛物线能带、有效质量计算、单位换算</p></li>
+<li><p><strong>题型：</strong> 数值计算题</p></li>
+<li><p><strong>难度：</strong> ★★</p></li>
+<li><p><strong>来源：</strong> 原创</p></li>
+<li><p><strong>建议用时：</strong> 15分钟</p></li>
+</ul>
+<section id="题目-1" class="level4">
+<h4 class="anchored" data-anchor-id="题目-1">题目</h4>
+<p>某半导体导带底位于<span class="math inline">\(k = 0\)</span>。在导带底附近，实验测得：</p>
+<p><span class="math display">\[
+E(k) - E_{c} = 0.200\,\mathrm{eV}
+\]</span></p>
+<p>对应于</p>
+<p><span class="math display">\[
+k = 0.100\,\mathring{\mathrm{A}}^{- 1}
+\]</span></p>
+<p>假设导带底附近可以采用各向同性抛物线近似。</p>
+<ol type="1">
+<li><p>计算该导带电子的有效质量<span class="math inline">\(m_{n}^{*}\)</span>。</p></li>
+<li><p>用自由电子质量<span class="math inline">\(m_{0}\)</span>为单位表示结果。</p></li>
+<li><p>若另一种材料在相同<span class="math inline">\(k\)</span>偏移下满足</p></li>
+</ol>
+<blockquote class="blockquote">
+<p><span class="math display">\[E(k) - E_{c} = 0.050\,\mathrm{eV}\]</span></p>
+<p>比较两种材料导带的曲率和有效质量。</p>
+</blockquote>
+<ol start="4" type="1">
+<li>在两种材料中的电子受到大小相同的外力时，比较其加速度大小。</li>
+</ol>
+</section>
+<section id="参考解答-1" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-1">参考解答</h4>
+<p><strong>1.</strong> 目标是求解抛物线的二阶导</p>
+<p>色散关系式</p>
+<p><span class="math display">\[
+E(k) = bk^{2} + E_{c}
+\]</span></p>
+<p>根据题目有<span class="math inline">\(E(0.1) = 0.2 + E_{c}\)</span>，得<span class="math inline">\(b = 20\,\mathrm{eV}\cdot\mathring{\mathrm{A}}^{2}\)</span>.</p>
+<p>有效质量，</p>
+<p><span class="math display">\[
+m_{n}^{*} = \hbar^{2}\left( \frac{d^{2}E}{dk^{2}} \right)^{- 1} = \frac{\hbar^{2}}{2b} = \frac{\hbar^{2}}{40} = 1.7369 \times 10^{- 31}\,\mathrm{kg}
+\]</span></p>
+<p><strong>2.</strong></p>
+<p><span class="math display">\[
+m_{n}^{*} = \frac{m_{n}^{*}}{m_{0}}m_{0} = 0.19m_{0}
+\]</span></p>
+<p><strong>3.</strong> 色散关系的系数记为<span class="math inline">\(b_{2} = 5\,\mathrm{eV}\cdot\mathring{\mathrm{A}}^{2}\)</span>,</p>
+<p>曲率比</p>
+<p><span class="math display">\[
+\frac{\left( \frac{d^{2}E_{1}}{dk^{2}} \right)}{\left( \frac{d^{2}E_{1}}{dk^{2}} \right)} = \frac{2b_{1}}{2b_{2}} = 4
+\]</span></p>
+<p>有效质量比</p>
+<p><span class="math display">\[
+\frac{\frac{m_{1}^{*}}{m_{2}^{*}} = \left( \frac{d^{2}E_{1}}{dk^{2}} \right)^{- 1}}{\left( \frac{d^{2}E_{1}}{dk^{2}} \right)}^{- 1} = \frac{2b_{2}}{2b_{1}} = \frac{1}{4}
+\]</span></p>
+<p><strong>4.</strong> 加速度之比与有效质量之比成反比</p>
+<p><span class="math display">\[
+\frac{a_{1}}{a_{2}} = \frac{m_{2}^{*}}{m_{1}^{*}} = 4
+\]</span></p>
+</section>
+</section>
+<section id="sd-01-003空穴描述的建立" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-003空穴描述的建立">SD-01-003｜空穴描述的建立</h3>
+<ul>
+<li><p><strong>知识点：</strong> 价带电子、空穴、波矢、速度与电荷</p></li>
+<li><p><strong>题型：</strong> 概念推导题</p></li>
+<li><p><strong>难度：</strong> ★★</p></li>
+<li><p><strong>来源：</strong> 经典教材改编；Pierret，主题：电子与空穴</p></li>
+<li><p><strong>建议用时：</strong> 20分钟</p></li>
+</ul>
+<section id="题目-2" class="level4">
+<h4 class="anchored" data-anchor-id="题目-2">题目</h4>
+<p>考虑一个除去单个电子之外完全充满的价带。缺失电子原本处于波矢为 <span class="math inline">\(\mathbf{k}_{0}\)</span> 的状态。</p>
+<ol type="1">
+<li><p>说明为什么完全充满的价带在外场下不能产生净的载流子响应。</p></li>
+<li><p>从”满价带贡献减去缺失电子贡献”的角度，确定空穴的：</p>
+<ul>
+<li><p>电荷；</p></li>
+<li><p>波矢；</p></li>
+<li><p>晶体动量；</p></li>
+<li><p>群速度；</p></li>
+<li><p>能量。</p></li>
+</ul></li>
+<li><p>说明为什么可以用正有效质量的空穴代替价带顶附近具有负有效质量的电子。</p></li>
+<li><p>判断”空穴是晶体中真实存在的一种基本粒子”这一说法是否准确，并给出严格表述。</p></li>
+<li><p>解释为什么空穴概念只在能带接近充满时特别有效。</p></li>
+</ol>
+</section>
+<section id="参考解答-2" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-2">参考解答</h4>
+<p><strong>1.</strong> 价带完全充满的情况下，因为每个<span class="math inline">\(k\)</span>状态都被占据，且在时间反演对称性情况下，</p>
+<p><span class="math display">\[
+E\left( \mathbf{k} \right) = E\left( - \mathbf{k} \right),\ \mathbf{v}\left( - \mathbf{k} \right) = - \mathbf{v}\left( \mathbf{k} \right)
+\]</span></p>
+<p>所以</p>
+<p><span class="math display">\[
+\sum_{full}^{}{\mathbf{v}\left( \mathbf{k} \right)} = 0,
+\]</span></p>
+<p>满带没有净的载流子响应。</p>
+<p><strong>2.</strong> 设缺失的电子的相关参数分别为，电荷量<span class="math inline">\(- q\)</span>，群速度<span class="math inline">\(v_{e}\)</span>，能量为<span class="math inline">\(E_{e}\)</span></p>
+<p><strong>（1）</strong> 假设满价带的电荷量为<span class="math inline">\(N\)</span>，缺失一个电子后的电荷量为<span class="math inline">\(N - ( - q) = N + q\)</span>，空穴的电荷量<span class="math inline">\(q_{h} = (N + q) - N = q\)</span>，即电荷量大小与电子相同，值为正。</p>
+<p><strong>（2）</strong> 满价带的总波矢为<span class="math inline">\(\sum_{full}^{}\mathbf{k}\)</span>，缺失一个电子后的总波矢<span class="math inline">\(\sum_{full}^{}\mathbf{k} - \mathbf{k}_{0}\)</span>，空穴的波矢<span class="math inline">\(\mathbf{k}_{h} = \left( \sum_{full}^{}\mathbf{k} - \mathbf{k}_{0} \right) - \sum_{full}^{}\mathbf{k} = - \mathbf{k}_{0}\)</span>。</p>
+<p>(3)晶体动量<span class="math inline">\(\mathbf{p}_{h} = - \hbar\mathbf{k}_{0}\)</span></p>
+<p>(4)满价带的净电流为零。假设缺失电流的体系电流为<span class="math inline">\(I\)</span>，在缺失处填入一个电荷为<span class="math inline">\(- q\)</span>的电子，则其携带的电流为<span class="math inline">\(- qv_{e}\)</span>。填入电荷后的体系电流为</p>
+<p><span class="math display">\[
+- qv_{e} + I = 0.
+\]</span></p>
+<p>因此<span class="math inline">\(I = qv_{e}\)</span>。空穴的群速度<span class="math inline">\(v_{h} = \frac{I}{q_{h}} = v_{e}\)</span></p>
+<p><strong>（5）</strong> 假设满价带的能量为<span class="math inline">\(E_{full}\)</span>，缺失一个电子后的总能量为<span class="math inline">\(E_{full} - E_{e}\)</span>，空穴的能量为<span class="math inline">\(E_{h} = \left( E_{full} - E_{e} \right) - E_{full} = - E_{e}\)</span>。</p>
+<p><strong>3.</strong> 空穴的有效质量</p>
+<p><span class="math display">\[
+m_{h}^{*} = \hbar^{2}\left( \frac{d^{2}E_{h}}{dk_{h}^{2}} \right)^{- 1} = \hbar^{2}\left( \frac{d^{2}\left( - E_{e} \right)}{\left( - dk_{e} \right)^{2}} \right)^{- 1} = - \hbar^{2}\left( \frac{{d^{2}E}_{e}}{dk_{e}^{2}} \right)^{- 1} = - m_{e}^{*}
+\]</span></p>
+<p><strong>4.</strong> 不能。空穴的本质是一群电子运动等效，是价带中缺失电子所对应的准粒子，而不意味着引入了一种真实的粒子。</p>
+<p><strong>5.</strong> 当价带接近充满时，体系中只有少量未被占据的状态，此时空穴的引入，可使对电子群的集体行为的研究转化为对少量空穴运动行为的追踪，从而极大地简化了研究难度。若价带未接近充满，如金属，体系存在大量未被占据的状态，即使引入空穴概念，我们仍然需要对大量空穴的集体行为进行研究，导致问题并没有被简化。</p>
+</section>
+</section>
+<section id="sd-01-004六个常见表述的判断与纠错" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-004六个常见表述的判断与纠错">SD-01-004｜六个常见表述的判断与纠错</h3>
+<ul>
+<li><p><strong>知识点：</strong> 有效质量、空穴、带隙、态密度、费米能级</p></li>
+<li><p><strong>题型：</strong> 判断与纠错题</p></li>
+<li><p><strong>难度：</strong> ★★</p></li>
+<li><p><strong>来源：</strong> 原创；依据 NPTEL 有效质量、能带和载流子统计主题设计。NPTEL 的相关公开材料分别讨论了有效质量以及态密度问题。<a href="https://www.youtube.com/watch?v=68AcHaqfBgs">YouTube</a></p></li>
+<li><p><strong>建议用时：</strong> 20分钟</p></li>
+</ul>
+<section id="题目-3" class="level4">
+<h4 class="anchored" data-anchor-id="题目-3">题目</h4>
+<p>判断下列说法是否正确。对于不准确的说法，改写为严格、完整的表述。</p>
+<ol type="1">
+<li><p>有效质量是材料中电子实际质量与自由电子质量之差。</p></li>
+<li><p>价带顶附近电子的有效质量为负，因此这些电子具有负惯性。</p></li>
+<li><p>空穴浓度等于价带中所有未被电子占据的量子态数量。</p></li>
+<li><p>费米能级表示半导体中电子所能占据的最高能量。</p></li>
+<li><p>在任意温度下，能量等于费米能级的状态被电子占据的概率均为 (1/2)。</p></li>
+<li><p>直接带隙材料和间接带隙材料的主要区别只是带隙数值大小不同。</p></li>
+</ol>
+</section>
+<section id="参考解答-3" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-3">参考解答</h4>
+<p><strong>1.</strong> 不正确。有效质量是电子在周期性势场中的等效动力学参数。</p>
+<p><strong>2.</strong> 不正确。价带顶附近电子可具有负的有效惯性响应，即在半经典方程中加速度方向与外力相反；这不表示电子的静止质量为负。实际分析通常改用正电荷、正有效质量的空穴。</p>
+<p><strong>3.</strong> 不准确。空穴数量等于价带中所有未被电子占据的量子态数量，空穴浓度等于单位体积（二维材料中为单位面积）内，价带中所有未被电子占据的量子态数量。</p>
+<p><strong>4.</strong> 不正确。费米能级是热平衡化学势。对<span class="math inline">\(T &gt; 0\)</span>，费米能级满足电子占据概率为二分之一。在绝对零度的金属中，电子自下而上依次填充能级；但在半导体中，费米能级位于能隙当中，不是一个具体电子占据边界，电子在热激发下可以处于具有更高能量的导带当中。</p>
+<p><strong>5.</strong> 正确。在 <span class="math inline">\(T = 0\)</span> 的阶跃函数定义中，<span class="math inline">\(E = E_{F}\)</span> 单点的取值是约定性的。</p>
+<p><strong>6.</strong> 不正确。直接带隙和间接带隙的关键区别是导带底盒价带顶是否位于同一波矢，而不是带隙大小。直接带隙表示价带顶和导带底的两个电子态具有相同的波矢，间接带隙表示价带顶和导带底的两个电子态具有不同的波矢。前者的电子跃迁只需要改变能量（如通过光子），后者的电子跃迁需要同时改变能量和动量（如通过声子）。</p>
+</section>
+</section>
+</section>
+<section id="第二层概念联系与标准分析" class="level2">
+<h2 class="anchored" data-anchor-id="第二层概念联系与标准分析">第二层：概念联系与标准分析</h2>
+<section id="sd-01-005直接带隙与间接带隙的能带图" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-005直接带隙与间接带隙的能带图">SD-01-005｜直接带隙与间接带隙的能带图</h3>
+<ul>
+<li><p><strong>知识点：</strong> 直接带隙、间接带隙、能量守恒、晶体动量守恒</p></li>
+<li><p><strong>题型：</strong> 能带图分析题</p></li>
+<li><p><strong>难度：</strong> ★★</p></li>
+<li><p><strong>来源：</strong> 经典教材改编；Neamen，主题：半导体能带结构</p></li>
+<li><p><strong>建议用时：</strong> 15分钟</p></li>
+</ul>
+<section id="题目-4" class="level4">
+<h4 class="anchored" data-anchor-id="题目-4">题目</h4>
+<p>在同一坐标系中分别绘制一种直接带隙半导体和一种间接带隙半导体沿某一高对称方向的简化 (E-k) 图，并在图中标出：</p>
+<ul>
+<li><p>价带顶；</p></li>
+<li><p>导带底；</p></li>
+<li><p>带隙 (<span class="math inline">\(E_{g}\)</span>)；</p></li>
+<li><p>最低能量的带间跃迁；</p></li>
+<li><p>跃迁前后的电子波矢。</p></li>
+</ul>
+<p>随后回答：</p>
+<ol type="1">
+<li><p>两种材料中导带底与价带顶在 (k) 空间中的相对位置有何区别？</p></li>
+<li><p>为什么光子通常可以提供跃迁所需的能量，却难以单独提供间接跃迁所需的晶体动量变化？</p></li>
+<li><p>在间接带隙材料中，最低能量带间跃迁还需哪一类晶格激发参与？</p></li>
+<li><p>“间接带隙材料不能吸收光”这一说法是否正确？</p></li>
+<li><p>仅根据一个材料的带隙数值，能否判断它是直接带隙还是间接带隙？</p></li>
+</ol>
+<div id="fig-direct-indirect-bandgap" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-direct-indirect-bandgap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/images/direct-indirect-bandgap.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-direct-indirect-bandgap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1: 直接带隙与间接带隙的简化能带示意图
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="参考解答-4" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-4">参考解答</h4>
+<p><strong>1.</strong> 直接带隙中价带顶和导带底的两个电子态具有相同的波矢，间接带隙中价带顶和导带底的两个电子态具有不同的波矢。前者的电子跃迁只需要改变能量（如通过光子），后者的电子跃迁需要同时改变能量和动量（如通过声子）。</p>
+<p><strong>2.</strong> 光子动量为</p>
+<p><span class="math display">\[
+p_{\gamma} = \frac{E_{\gamma}}{c},q_{\gamma} = \frac{E_{\gamma}}{\hbar c}.
+\]</span></p>
+<p>可见光光子的波矢通常为<span class="math inline">\(10^{7}\,\mathrm{m}^{- 1}\)</span>，二布里渊区尺度和间接能谷间隔通常约为<span class="math inline">\(10^{10}\,\mathrm{m}^{- 1}\)</span>，因此光子动量太小，不能独立补偿间接跃迁所需要的晶体动量。</p>
+<p><strong>3.</strong> 声子。声子的引入可以改变动量</p>
+<p><strong>4.</strong> 不正确。间接跃迁需要声子参与，既可能是吸收声子，也可能是发射声子。因此间接带隙材料能够吸光，只是带边附近的声子辅助吸收通常比直接跃迁弱。</p>
+<p><strong>5.</strong> 不能。</p>
+</section>
+</section>
+<section id="sd-01-006两种材料的光学跃迁比较" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-006两种材料的光学跃迁比较">SD-01-006｜两种材料的光学跃迁比较</h3>
+<ul>
+<li><p><strong>知识点：</strong> 直接跃迁、间接跃迁、吸收阈值</p></li>
+<li><p><strong>题型：</strong> 定性综合题</p></li>
+<li><p><strong>难度：</strong> ★★</p></li>
+<li><p><strong>来源：</strong> 经典教材改编；Sze 与 Ng，主题：直接和间接带间跃迁</p></li>
+<li><p><strong>建议用时：</strong> 15分钟</p></li>
+</ul>
+<section id="题目-5" class="level4">
+<h4 class="anchored" data-anchor-id="题目-5">题目</h4>
+<p>材料A是直接带隙半导体，带隙为<span class="math inline">\(1.42\,\mathrm{eV}\)</span>；材料B是间接带隙半导体，带隙为<span class="math inline">\(1.12\,\mathrm{eV}\)</span>。</p>
+<p>现分别用能量为 ①<span class="math inline">\(1.20\,\mathrm{eV}\)</span>、②<span class="math inline">\(1.42\,\mathrm{eV}\)</span>和 ③<span class="math inline">\(1.60\,\mathrm{eV}\)</span>的单色光照射两种本征材料。</p>
+<p>对每一种光子能量，分别讨论：</p>
+<ol type="1">
+<li><p>从能量守恒角度，价带电子是否可能跃迁到导带？</p></li>
+<li><p>若能量条件满足，晶体动量守恒是否能由光子单独满足？</p></li>
+<li><p>两种材料的吸收过程可能具有怎样的相对强弱差异？</p></li>
+<li><p>提高或降低温度可能对材料B的间接跃迁产生什么影响？</p></li>
+<li><p>带隙较小是否必然意味着材料在带边附近具有更强的光吸收？</p></li>
+</ol>
+<p>本题不要求使用具体吸收系数公式。</p>
+</section>
+<section id="参考解答-5" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-5">参考解答</h4>
+<p><strong>1.</strong> 仅从能量守恒分析，②和③光子可使材料A的价带电子跃迁，所有光子均可使材料B发生跃迁</p>
+<p><strong>2.</strong> 光子携带的动量通常不足以连接间接能谷</p>
+<p><strong>3.</strong></p>
+<p>①<span class="math inline">\(h\nu = 1.20\,\mathrm{eV}\)</span>：材料 A 低于直接带隙，不能发生带边直接跃迁；材料 B 从能量上可能发生声子辅助间接跃迁，实际阈值需计入声子能量 <span class="math inline">\(\pm \hbar\omega_{q}\)</span>。</p>
+<p>②<span class="math inline">\(h\nu = 1.42\,\mathrm{eV}\)</span>：材料 A 达到直接带隙阈值，材料 B 也可能发生间接跃迁。但在理想三维抛物线模型中，直接吸收在精确阈值处从零开始，因此仅凭题给信息不能严格断言此时 <span class="math inline">\(A \gg B\)</span>。</p>
+<p>③<span class="math inline">\(h\nu = 1.60\,\mathrm{eV}\)</span>：两者均可吸收，通常直接带隙材料 A 的带边吸收更强。</p>
+<p><strong>4.</strong> 温度会改变晶格振动的强弱，更强的晶格振动会产生动量更大的声子，使间接跃迁更容易发生</p>
+<p>温度升高的主要作用时改变声子占据数</p>
+<p><span class="math display">\[
+N_{q} = \frac{1}{e_{q}^{\frac{\hbar\omega}{k_{B}T}} - 1}
+\]</span></p>
+<p>声子吸收过程的权重与<span class="math inline">\(N_{q}\)</span>有关，声子发射过程与<span class="math inline">\(N_{q} + 1\)</span>有关。</p>
+<p><strong>5.</strong> 否。带隙较小只意味着能量阈值较低，不保证带边吸收更强；跃迁矩阵元、联合态密度和动量守恒条件同样关键。</p>
+</section>
+</section>
+<section id="sd-01-007三维抛物线能带的态密度推导" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-007三维抛物线能带的态密度推导">SD-01-007｜三维抛物线能带的态密度推导</h3>
+<ul>
+<li><p><strong>知识点：</strong><span class="math inline">\(k\)</span>空间状态计数、三维态密度、简并度</p></li>
+<li><p><strong>题型：</strong> 数学推导题</p></li>
+<li><p><strong>难度：</strong> ★★★</p></li>
+<li><p><strong>来源：</strong> 经典教材改编；Pierret 与 Neamen，主题：三维半导体态密度</p></li>
+<li><p><strong>建议用时：</strong> 30分钟</p></li>
+</ul>
+<section id="题目-6" class="level4">
+<h4 class="anchored" data-anchor-id="题目-6">题目</h4>
+<p>考虑体积为<span class="math inline">\(V = L^{3}\)</span>的三维半导体，采用周期性边界条件。导带底附近满足各向同性抛物线色散关系：</p>
+<p><span class="math display">\[
+E(k) = E_{c} + \frac{\hbar^{2}k^{2}}{2m_{n}^{*}}
+\]</span></p>
+<p>从<span class="math inline">\(k\)</span>空间中的允许状态计数出发：</p>
+<ol type="1">
+<li><p>确定每一个允许<span class="math inline">\(k\)</span>状态在<span class="math inline">\(k\)</span>空间中占据的体积。</p></li>
+<li><p>计入自旋简并，求波矢模长不超过<span class="math inline">\(k_{0}\)</span>的总量子态数。</p></li>
+<li><p>将总量子态数写成能量<span class="math inline">\(E\)</span>的函数。</p></li>
+<li><p>推导单位体积、单位能量范围内的导带态密度<span class="math inline">\(g_{c}(E)\)</span>。</p></li>
+<li><p>说明为什么三维抛物线导带的态密度在导带底为零。</p></li>
+<li><p>分析<span class="math inline">\(g_{c}(E)\)</span>对有效质量<span class="math inline">\(m_{n}^{*}\)</span>的依赖关系。</p></li>
+<li><p>采用类似方法写出价带顶附近的空穴态密度表达式。</p></li>
+</ol>
+</section>
+<section id="参考解答-6" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-6">参考解答</h4>
+<p><strong>1.</strong> 布洛赫定理要求电子的波函数形式为<span class="math inline">\(\psi(r) = u(r)e^{ik \cdot r}\)</span>，周期性要求</p>
+<p><span class="math display">\[
+k \cdot r = 2\pi n
+\]</span></p>
+<p>考虑边长为<span class="math inline">\(L\)</span>的三维立方半导体，三个方向的波矢分别满足</p>
+<p><span class="math display">\[
+k_{x} = n_{x}\frac{2\pi}{L},\ k_{y} = n_{y}\frac{2\pi}{L},\ k_{z} = n_{z}\frac{2\pi}{L}.
+\]</span></p>
+<p>周期性边界条件给出，波矢的最小刻度为<span class="math inline">\(\Delta k_{x} = \Delta k_{y} = \Delta k_{z} = \frac{2\pi}{L}\)</span>，一个<span class="math inline">\(k\)</span>状态占据的微小立方体的体积为</p>
+<p><span class="math display">\[
+\Omega_{k} = \frac{2\pi}{L} \cdot \frac{2\pi}{L} \cdot \frac{2\pi}{L} = \frac{8\pi^{3}}{L^{3}} = \frac{8\pi^{3}}{V}
+\]</span></p>
+<p><strong>2.</strong> 在<span class="math inline">\(k\)</span>空间中，模长小于<span class="math inline">\(k_{0}\)</span>的波矢构成了一个半径为<span class="math inline">\(k_{0}\)</span>的球体，球体的体积为<span class="math inline">\(V_{k_{0}} = \frac{4\pi k_{0}^{3}}{3}\)</span>，总量子态数为，</p>
+<p><span class="math display">\[
+n = \frac{V_{k_{0}}}{\Omega_{k}} = \frac{4\pi k_{0}^{3}}{3}\frac{L^{3}}{8\pi^{3}} = \frac{k_{0}^{3}L^{3}}{6\pi^{2}}.
+\]</span></p>
+<p>计入自旋简并，</p>
+<p><span class="math display">\[
+N\left( k_{0} \right) = \frac{k_{0}^{3}L^{3}}{3\pi^{2}}
+\]</span></p>
+<p><strong>3.</strong> 当波矢上限为<span class="math inline">\(k_{0}\)</span>时，能量上限为，</p>
+<p><span class="math display">\[
+E = E_{c} + \frac{\hbar^{2}k_{0}^{2}}{2m_{n}^{*}}.
+\]</span></p>
+<p>求解<span class="math inline">\(k_{0}\)</span>与<span class="math inline">\(E\)</span>的关系式，</p>
+<p><span class="math display">\[
+k_{0} = \sqrt{\frac{2m_{n}^{*}}{\hbar^{2}}\left( E - E_{c} \right)},
+\]</span></p>
+<p>代入总量子态数，</p>
+<p><span class="math display">\[
+N(E) = \frac{k_{0}^{3}L^{3}}{3\pi^{2}} = \frac{L^{3}}{3\pi^{2}}\left\lbrack \sqrt{\frac{2m_{n}^{*}}{\hbar^{2}}\left( E - E_{c} \right)} \right\rbrack^{3} = \frac{L^{3}}{3\pi^{2}}\left\lbrack \frac{2m_{n}^{*}}{\hbar^{2}}\left( E - E_{c} \right) \right\rbrack^{\frac{3}{2}}.
+\]</span></p>
+<p><strong>4.</strong> 单位体积、单位能量内的量子态数</p>
+<p><span class="math display">\[
+g_{c}(E) = \frac{1}{V}\frac{dN}{dE} = \frac{1}{V}\frac{L^{3}}{3\pi^{2}}\left( \frac{2m_{n}^{*}}{\hbar^{2}} \right)^{3/2}\frac{3}{2}\left( E - E_{c} \right)^{1/2} = \frac{1}{2\pi^{2}}\left( \frac{2m_{n}^{*}}{\hbar^{2}} \right)^{3/2}\left( E - E_{c} \right)^{1/2},\ E \geq E_c\
+\]</span></p>
+<p><strong>5.</strong> 导带低有<span class="math inline">\(E = E_{c}\)</span>，代入上式，态密度为<span class="math inline">\(g_{c}\left( E_{c} \right) = 0\)</span>。</p>
+<p><strong>6.</strong></p>
+<p><span class="math display">\[
+g_{c}(E) = \frac{1}{V}\frac{dN}{dE} = \frac{1}{V}\frac{L^{3}}{3\pi^{2}}\left( \frac{2m_{n}^{*}}{\hbar^{2}} \right)^{3/2}\frac{3}{2}\left( E - E_{c} \right)^{1/2} = \frac{\sqrt{2}}{\pi^{2}\hbar^{3}}\left( E - E_{c} \right)^{1/2}\left( m_{n}^{*} \right)^{3/2}
+\]</span></p>
+<p>有效态密度与有效质量的二分之三次方成正比。</p>
+<p><strong>7.</strong> 假设价带顶附近满足各向同性抛物线色散关系，</p>
+<p><span class="math display">\[
+E(k) = E_{v} - \frac{\hbar^{2}k^{2}}{2m_{p}^{*}}.
+\]</span></p>
+<p>那么价带顶的空穴态密度为，</p>
+<p><span class="math display">\[
+g_{c}(E) = \frac{1}{2\pi^{2}}\left( \frac{2m_{p}^{*}}{\hbar^{2}} \right)^{3/2}\left( E_{v} - E \right)^{1/2},\ \ E \leq E_{v}
+\]</span></p>
+</section>
+</section>
+<section id="sd-01-008有限体积样品中的可用状态数" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-008有限体积样品中的可用状态数">SD-01-008｜有限体积样品中的可用状态数</h3>
+<ul>
+<li><p><strong>知识点：</strong> 态密度积分、能量区间内的状态数</p></li>
+<li><p><strong>题型：</strong> 数值计算题</p></li>
+<li><p><strong>难度：</strong> ★★★</p></li>
+<li><p><strong>来源：</strong> 原创</p></li>
+<li><p><strong>建议用时：</strong> 25分钟</p></li>
+</ul>
+<section id="题目-7" class="level4">
+<h4 class="anchored" data-anchor-id="题目-7">题目</h4>
+<p>某三维半导体具有单一、各向同性的导带极小值，其电子有效质量为<span class="math inline">\(m_{n}^{*} = 0.26m_{0}\)</span>.取一个体积为<span class="math inline">\(V = 1.00\,\mathrm{\mu m}^{3}\)</span>的样品区域。</p>
+<ol type="1">
+<li><p>计算导带底以上<span class="math inline">\(0\)</span>至<span class="math inline">\(0.100\,\mathrm{eV}\)</span>范围内可容纳的电子量子态总数。计入自旋简并。</p></li>
+<li><p>计算导带底以上<span class="math inline">\(0.090\,\mathrm{eV}\)</span>至<span class="math inline">\(0.100\,\mathrm{eV}\)</span>范围内的量子态数。</p></li>
+<li><p>比较上述两个能量区间的宽度和状态数，说明状态在能量轴上是否均匀分布。</p></li>
+<li><p>若有效质量变为<span class="math inline">\(0.52m_{0}\)</span>，而能带简并度和样品体积均保持不变，重新确定第1问中状态数的变化比例。</p></li>
+</ol>
+<p>本题只计算可用状态数，不考虑这些状态的占据概率。</p>
+</section>
+<section id="参考解答-7" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-7">参考解答</h4>
+<p><strong>1.</strong></p>
+<p><span class="math display">\[
+N_{0 - 0.1} = \frac{V}{3\pi^{2}}\left\lbrack \frac{2m_{n}^{*}}{\hbar^{2}}\left( E - E_{c} \right) \right\rbrack^{\frac{3}{2}} = \frac{1 \times \left( 10^{- 6} \right)^{3}}{3\pi^{2}}\left\lbrack \frac{2 \times 0.26 \times 9.109 \times 10^{- 31}}{\left( 1.055 \times 10^{- 34} \right)^{2}} \times 0.1 \times 1.602 \times 10^{- 19} \right\rbrack^{3/2} = 1.901 \times 10^{7}
+\]</span></p>
+<p><strong>2.</strong></p>
+<p><span class="math display">\[
+N_{0.09 - 0.1} = N_{0 - 0.1} - N_{0 - 0.09} = 2.779 \times 10^{6}
+\]</span></p>
+<p><strong>3.</strong></p>
+<p>单位能量的状态数</p>
+<p><span class="math display">\[
+\frac{N_{0 - 0.1}}{\Delta E} = \frac{1.901 \times 10^{7}}{0.1\,\mathrm{eV}} = 1.901 \times \frac{10^{8}}{\mathrm{eV}}
+\]</span></p>
+<p><span class="math display">\[
+\frac{N_{0.09 - 0.1}}{\Delta E} = \frac{2.779 \times 10^{6}}{0.01\,\mathrm{eV}} = 2.779 \times \frac{10^{8}}{\mathrm{eV}}
+\]</span></p>
+<p>量子态数在能量轴上不均匀，由于<span class="math inline">\(g_{c}(E) \propto \sqrt{E - E_{c}}\)</span>，态密度远离导带底的密度更高</p>
+<p><strong>4.</strong></p>
+<p><span class="math display">\[
+N_{0 - 0.1} = \frac{V}{3\pi^{2}}\left\lbrack \frac{2m_{n}^{*}}{\hbar^{2}}\left( E - E_{c} \right) \right\rbrack^{\frac{3}{2}} = \frac{1 \times \left( 10^{- 6} \right)^{3}}{3\pi^{2}}\left\lbrack \frac{2 \times 0.52 \times 9.109 \times 10^{- 31}}{\left( 1.055 \times 10^{- 34} \right)^{2}} \times 0.1 \times 1.602 \times 10^{- 19} \right\rbrack^{3/2} = 5.377 \times 10^{7}
+\]</span></p>
+</section>
+</section>
+<section id="sd-01-009椭球能谷与多能谷态密度" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-009椭球能谷与多能谷态密度">SD-01-009｜椭球能谷与多能谷态密度</h3>
+<ul>
+<li><p><strong>知识点：</strong> 各向异性有效质量、态密度有效质量、能谷简并</p></li>
+<li><p><strong>题型：</strong> 推导与参数分析题</p></li>
+<li><p><strong>难度：</strong> ★★★</p></li>
+<li><p><strong>来源：</strong> 公开资料与经典教材改编；NPTEL 半导体物理资料讨论了直接、间接材料及态密度有效质量的区别。<a href="https://archive.nptel.ac.in/content/storage2/courses/115102025/module1/5.html">archive.nptel.ac.in</a></p></li>
+<li><p><strong>建议用时：</strong> 30分钟</p></li>
+</ul>
+<section id="题目-8" class="level4">
+<h4 class="anchored" data-anchor-id="题目-8">题目</h4>
+<p>某半导体的一个导带能谷为旋转椭球形，其色散关系为</p>
+<p><span class="math display">\[
+E - E_{c} = \frac{\hbar^{2}k_{x}^{2}}{2m_{t}} + \frac{\hbar^{2}k_{y}^{2}}{2m_{t}} + \frac{\hbar^{2}k_{z}^{2}}{2m_{l}}
+\]</span></p>
+<p>其中横向有效质量和纵向有效质量分别为<span class="math inline">\(m_{t} = 0.19m_{0},\ \ m_{l} = 0.98m_{0}\)</span>。材料中共有<span class="math inline">\(g_{v} = 6\)</span>个能量相同的等价能谷。</p>
+<ol type="1">
+<li><p>在给定能量<span class="math inline">\(E\)</span>下，写出该能谷对应的等能面方程，并确定三个半轴。</p></li>
+<li><p>从椭球体积出发，推导单个能谷的态密度。</p></li>
+<li><p>定义一个各向同性的态密度有效质量<span class="math inline">\(m_{DOS}^{*}\)</span>，使单能谷态密度可以写成各向同性形式。</p></li>
+<li><p>计入六重能谷简并后，写出总态密度。</p></li>
+<li><p>判断能谷简并是否可以简单理解为将电子有效质量乘以6。</p></li>
+<li><p>分析在导带底位置不变的情况下，增大能谷简并度对可用态数及载流子浓度的影响。</p></li>
+</ol>
+</section>
+<section id="参考解答-8" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-8">参考解答</h4>
+<p><strong>1.</strong> 等能面方程</p>
+<p><span class="math display">\[
+1 = \frac{k_{x}^{2}}{\left\lbrack \frac{2m_{t}\left( E - E_{c} \right)}{\hbar^{2}} \right\rbrack} + \frac{k_{y}^{2}}{\left\lbrack \frac{2m_{t}\left( E - E_{c} \right)}{\hbar^{2}} \right\rbrack} + \frac{k_{z}^{2}}{\left\lbrack \frac{2m_{l}\left( E - E_{c} \right)}{\hbar^{2}} \right\rbrack}
+\]</span></p>
+<p>三个半轴，分别沿<span class="math inline">\(k_{x}\)</span>半轴，<span class="math inline">\(k_{y}\)</span>半轴，<span class="math inline">\(k_{z}\)</span>半轴，</p>
+<p><span class="math display">\[
+a = \sqrt{\frac{2m_{t}\left( E - E_{c} \right)}{\hbar^{2}}},\ b = \sqrt{\frac{2m_{t}\left( E - E_{c} \right)}{\hbar^{2}}},\ c = \sqrt{\frac{2m_{l}\left( E - E_{c} \right)}{\hbar^{2}}}
+\]</span></p>
+<p>有效质量越大，能带曲率越缓，轴越长。</p>
+<p><strong>2.</strong></p>
+<p>量子态总数，</p>
+<p><span class="math display">\[
+N = \frac{V_{e}}{\Omega_{k}} = \frac{\frac{4\pi}{3}abc}{\frac{8\pi^{3}}{V}} = \frac{V}{6\pi^{2}}\left( \frac{\sqrt{\left( 2m_{t} \right)^{2}\left( 2m_{l} \right)}}{\hbar^{3}} \right)\left( E - E_{c} \right)^{\frac{3}{2}}
+\]</span></p>
+<p>考虑自旋简并，态密度为，</p>
+<p><span class="math display">\[
+g_{c}(E) = 2\frac{1}{V}\frac{dN}{dE} = \frac{1}{2\pi^{2}}\frac{\sqrt{\left( 2m_{t} \right)^{2}\left( 2m_{l} \right)}}{\hbar^{3}}\left( E - E_{c} \right)^{\frac{1}{2}}
+\]</span></p>
+<p><strong>3.</strong> 将态密度表达式进行整理，</p>
+<p><span class="math display">\[
+g_{c}(E) = \frac{1}{2\pi^{2}}\left( \frac{2}{\hbar^{2}} \right)^{\frac{3}{2}}\left( m_{t}^{2}m_{l} \right)^{\frac{1}{2}}\sqrt{E - E_{c}}
+\]</span></p>
+<p>令<span class="math inline">\(m_{DOS}^{*}\left( m_{DOS}^{*} \right)^{\frac{3}{2}} = \left( m_{t}^{2}m_{l} \right)^{\frac{1}{2}}\)</span>，则可定义各向同性的态密度有效质量<span class="math inline">\(m_{DOS}^{*} = \left( m_{t}^{2}m_{l} \right)^{\frac{1}{3}}\)</span>。代入数值，<span class="math inline">\(m_{DOS}^{*} = \left( {0.19}^{2} \times 0.98 \right)^{\frac{1}{3}}m_{0} \approx 0.328m_{0}\)</span></p>
+<p><strong>4.</strong> 总态密度</p>
+<p><span class="math display">\[
+g_{c - total\ }(E) = g_{v} \cdot g_{c}(E) = 6g_{c}(E)
+\]</span></p>
+<p><strong>5.</strong></p>
+<p>将4中的态密度整理为，</p>
+<p><span class="math display">\[
+g_{c,total\ }(E) = 6g_{c}(E) = \frac{1}{2\pi^{2}}\left( \frac{2}{\hbar^{2}} \right)^{\frac{3}{2}}\left( 6^{2}m_{t}^{2}m_{l} \right)^{\frac{1}{2}}\sqrt{E - E_{c}}
+\]</span></p>
+<p>有效质量<span class="math inline">\(m_{DOS,tol}^{*} = \left\lbrack 6^{2}\left( m_{t} \right)^{2}\left( m_{l} \right) \right\rbrack^{\frac{1}{3}} = g_{v}^{\frac{2}{3}}m_{DOS}^{*} \approx 1.084m_{0}\)</span>，因此不能认为电子有效质量乘以6。</p>
+<p><strong>6.</strong> 固定<span class="math inline">\(E_{F}\)</span>,<span class="math inline">\(T\)</span>和带边位置时，可用态数量与非简并载流子浓度均与<span class="math inline">\(g_{v}\)</span>成线性关系；若总载流子数由电中性条件固定，则增加简并度还会引起费米能级移动。</p>
+</section>
+</section>
+<section id="sd-01-010费米分布的数值特征" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-010费米分布的数值特征">SD-01-010｜费米分布的数值特征</h3>
+<ul>
+<li><p><strong>知识点：</strong> 费米–狄拉克分布、热展宽、占据概率</p></li>
+<li><p><strong>题型：</strong> 数值计算与图像分析题</p></li>
+<li><p><strong>难度：</strong> ★★</p></li>
+<li><p><strong>来源：</strong> 经典教材改编；Neamen，主题：费米–狄拉克统计</p></li>
+<li><p><strong>建议用时：</strong> 20分钟</p></li>
+</ul>
+<section id="题目-9" class="level4">
+<h4 class="anchored" data-anchor-id="题目-9">题目</h4>
+<p>考虑处于热平衡的电子系统，温度分别为<span class="math inline">\(T = 300\,\mathrm{K}\)</span>和<span class="math inline">\(T = 600\,\mathrm{K}\)</span>。</p>
+<ol type="1">
+<li><p>对两个温度，分别计算以下能量处的电子占据概率：<br>
+<span class="math display">\[E - E_{F} = - 3k_{B}T,\  - k_{B}T,\ 0,\ k_{B}T,\ 3k_{B}T\]</span></p></li>
+<li><p>验证费米分布在<span class="math inline">\(E_{F}\)</span>两侧是否满足<br>
+<span class="math display">\[f\left( E_{F} + \Delta E \right) + f\left( E_{F} - \Delta E \right) = 1\]</span></p></li>
+<li><p>在同一能量坐标中定性绘制<span class="math inline">\(300\,\mathrm{K}\)</span>和<span class="math inline">\(600\,\mathrm{K}\)</span>下的<span class="math inline">\(f(E)\)</span>。</p></li>
+<li><p>在图中标出两个温度下由 <span class="math inline">\(f = 0.9\)</span> 下降至<span class="math inline">\(f = 0.1\)</span> 所对应的大致能量区间。</p></li>
+<li><p>判断升高温度是否会改变<span class="math inline">\(E = E_{F}\)</span>处的占据概率。</p></li>
+<li><p>说明”费米能级以下的状态全部被占据”在哪一种温度极限下才严格成立。</p></li>
+</ol>
+</section>
+<section id="参考解答-9" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-9">参考解答</h4>
+<p><strong>1.</strong></p>
+<p>300K下</p>
+<p><span class="math display">\[
+f\left( E_{F} - 3k_{B}T \right) = \frac{1}{\exp\left( - \frac{3k_{B}T}{k_{B}T} \right) + 1} = \frac{1}{e^{- 3} + 1}
+\]</span></p>
+<p><span class="math display">\[
+f\left( E_{F} - k_{B}T \right) = \frac{1}{e^{- 1} + 1},f\left( E_{F} \right) = \frac{1}{2},f\left( E_{F} + k_{B}T \right) = \frac{1}{e + 1},f\left( E_{F} + {3k}_{B}T \right) = \frac{1}{e^{3} + 1}
+\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math display">\[x\]</span></th>
+<th style="text-align: right;"><span class="math display">\[f(E)\]</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math display">\[- 3\]</span></td>
+<td style="text-align: right;"><span class="math display">\[0.9526\]</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math display">\[- 1\]</span></td>
+<td style="text-align: right;"><span class="math display">\[0.7311\]</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math display">\[0\]</span></td>
+<td style="text-align: right;"><span class="math display">\[0.5000\]</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math display">\[1\]</span></td>
+<td style="text-align: right;"><span class="math display">\[0.2689\]</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math display">\[3\]</span></td>
+<td style="text-align: right;"><span class="math display">\[0.0474\]</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>2.</strong></p>
+<p><span class="math display">\[
+f\left( E_{F} + \Delta E \right) = \frac{1}{\exp\left( \frac{\Delta E}{k_{B}T} \right) + 1}
+\]</span></p>
+<p><span class="math display">\[
+f\left( E_{F} + \Delta E \right) = \frac{1}{\exp\left( - \frac{\Delta E}{k_{B}T} \right) + 1} = \frac{\exp\left( \frac{\Delta E}{k_{B}T} \right)}{1 + \exp\left( \frac{\Delta E}{k_{B}T} \right)}
+\]</span></p>
+<p><span class="math display">\[
+f\left( E_{F} + \Delta E \right) + f\left( E_{F} + \Delta E \right) = \frac{1 + \exp\left( \frac{\Delta E}{k_{B}T} \right)}{\exp\left( \frac{\Delta E}{k_{B}T} \right) + 1} = 1
+\]</span></p>
+<p><strong>3.</strong></p>
+<div id="fig-fermi-dirac-distribution" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fermi-dirac-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/images/fermi-dirac-distribution.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fermi-dirac-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;2: 不同温度下的费米—狄拉克分布示意图
+</figcaption>
+</figure>
+</div>
+<p><strong>4.</strong> 如图所示</p>
+<p>由 <span class="math inline">\(f = 0.9\)</span> 和 <span class="math inline">\(f = 0.1\)</span> 得</p>
+<p><span class="math display">\[
+E - E_{F} = \mp k_{B}Tln9 = \mp 2.197k_{B}T.
+\]</span></p>
+<p>因此 <span class="math inline">\(0.9 \rightarrow 0.1\)</span> 的总热展宽约为</p>
+<p><span class="math display">\[
+\Delta E_{0.9 \rightarrow 0.1} = 4.394k_{B}T.
+\]</span></p>
+<p>在 <span class="math inline">\(300\,\mathrm{K}\)</span>：</p>
+<p><span class="math display">\[
+E - E_{F} \approx \pm 0.0568\,\mathrm{eV},
+\]</span></p>
+<p>总宽度约 <span class="math inline">\(0.1136\,\mathrm{eV}\)</span>。</p>
+<p>在 <span class="math inline">\(600\,\mathrm{K}\)</span>：</p>
+<p><span class="math display">\[
+E - E_{F} \approx \pm 0.1136\,\mathrm{eV},
+\]</span></p>
+<p>总宽度约 <span class="math inline">\(0.2272\,\mathrm{eV}\)</span>。</p>
+<p><strong>5.</strong> 不会，<span class="math inline">\(f\left( E_{F} \right) = \frac{1}{\exp\left( \frac{0}{k_{B}T} \right) + 1} = \frac{1}{2}\)</span></p>
+<p><strong>6.</strong> 费米能级以下的状态全部被占据，意味着<span class="math inline">\(f\left( E &gt; E_{F} \right) = 0\)</span>，这要求<span class="math inline">\(\exp\left( \frac{E - E_{F}}{k_{B}T} \right) \rightarrow + \infty\)</span>，所以<span class="math inline">\(T \rightarrow 0\)</span>。</p>
+</section>
+</section>
+</section>
+<section id="第三层载流子统计近似条件与本征半导体" class="level2">
+<h2 class="anchored" data-anchor-id="第三层载流子统计近似条件与本征半导体">第三层：载流子统计、近似条件与本征半导体</h2>
+<section id="sd-01-011玻尔兹曼近似的误差" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-011玻尔兹曼近似的误差">SD-01-011｜玻尔兹曼近似的误差</h3>
+<ul>
+<li><p><strong>知识点：</strong> 费米–狄拉克分布、玻尔兹曼近似、相对误差</p></li>
+<li><p><strong>题型：</strong> 模型适用性分析题</p></li>
+<li><p><strong>难度：</strong> ★★★</p></li>
+<li><p><strong>来源：</strong> 原创</p></li>
+<li><p><strong>建议用时：</strong> 20分钟</p></li>
+</ul>
+<section id="题目-10" class="level4">
+<h4 class="anchored" data-anchor-id="题目-10">题目</h4>
+<p>对于能量高于费米能级的状态，分别使用完整的费米–狄拉克分布和玻尔兹曼近似计算占据概率。</p>
+<p>考虑：<span class="math inline">\(E - E_{F} = k_{B}T,2k_{B}T,3k_{B}T,5k_{B}T\)</span></p>
+<ol type="1">
+<li><p>对每一种情况计算完整费米分布给出的占据概率。</p></li>
+<li><p>计算玻尔兹曼近似给出的占据概率。</p></li>
+<li><p>以完整费米分布为基准，计算玻尔兹曼近似的相对误差。</p></li>
+<li><p>确定相对误差首次低于<span class="math inline">\(5\%\)</span>和<span class="math inline">\(1\%\)</span>时，<span class="math inline">\(E - E_{F}\)</span>至少约为多少个<span class="math inline">\(k_{B}T\)</span>。</p></li>
+<li><p>讨论判断玻尔兹曼近似是否成立时，应该比较的是<span class="math inline">\(E_{c} - E_{F}\)</span>、<span class="math inline">\(E - E_{F}\)</span>，还是带隙<span class="math inline">\(E_{g}\)</span>。</p></li>
+<li><p>写出价带空穴采用玻尔兹曼近似时相应的能量条件。</p></li>
+</ol>
+</section>
+<section id="参考解答-10" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-10">参考解答</h4>
+<p><strong>1.</strong></p>
+<p><span class="math display">\[
+f\left( E_{F} + k_{B}T \right) = \frac{1}{e + 1},\ f\left( E_{F} + 2k_{B}T \right) = \frac{1}{e^{2} + 1},
+\]</span></p>
+<p><span class="math display">\[
+f\left( E_{F} + 3k_{B}T \right) = \frac{1}{e^{3} + 1},\ f\left( E_{F} + 3k_{B}T \right) = \frac{1}{e^{5} + 1}
+\]</span></p>
+<p><strong>2.</strong> 玻尔兹曼近似：<span class="math inline">\(E - E_{F} \gg k_{B}T\)</span>时，分母中的指数项将远大于1，因此1可被省略，费米-狄拉克分布退化为指数形式<span class="math inline">\(f(E) = \frac{1}{\exp\left( \frac{E - E_{F}}{k_{B}T} \right)} = \exp\left( \frac{E_{F} - E}{k_{B}T} \right)\)</span></p>
+<p><span class="math display">\[
+f_{B}\left( E_{F} + k_{B}T \right) = e^{- 1},\ f_{B}\left( E_{F} + 2k_{B}T \right) = e^{- 2},
+\]</span></p>
+<p><span class="math display">\[
+f_{B}\left( E_{F} + 3k_{B}T \right) = e^{- 3},\ f_{B}\left( E_{F} + 3k_{B}T \right) = e^{- 5}
+\]</span></p>
+<p><strong>3.</strong></p>
+<p><span class="math display">\[
+\delta_{1} = \frac{f_{B}\left( E_{F} + k_{B}T \right) - f\left( E_{F} + k_{B}T \right)}{f_{B}\left( E_{F} + k_{B}T \right)} = \frac{\frac{1}{e} - \frac{1}{e + 1}}{\frac{1}{e + 1}} = 0.3679
+\]</span></p>
+<p><span class="math display">\[
+\delta_{2} = \frac{\frac{1}{e^{2}} - \frac{1}{e^{2} + 1}}{\frac{1}{e^{2} + 1}} = 0.1353,\delta_{3} = \frac{\frac{1}{e^{2}} - \frac{1}{e^{2} + 1}}{\frac{1}{e^{2} + 1}} = 0.0498,\delta_{5} = \frac{\frac{1}{e^{2}} - \frac{1}{e^{2} + 1}}{\frac{1}{e^{2} + 1}} = 0.0067
+\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 18%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math display">\[x\]</span></th>
+<th style="text-align: right;"><span class="math display">\[f_{FD}\]</span></th>
+<th style="text-align: right;"><span class="math display">\[f_{B}\]</span></th>
+<th style="text-align: right;">相对误差</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.26894</td>
+<td style="text-align: right;">0.36788</td>
+<td style="text-align: right;">36.79%</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.11920</td>
+<td style="text-align: right;">0.13534</td>
+<td style="text-align: right;">13.53%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.04743</td>
+<td style="text-align: right;">0.04979</td>
+<td style="text-align: right;">4.98%</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.006693</td>
+<td style="text-align: right;">0.006738</td>
+<td style="text-align: right;">0.674%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.</strong> 令<span class="math inline">\(\Delta E = E - E_{F}\)</span>，<span class="math inline">\(x = \frac{\Delta E}{k_{B}T}\)</span></p>
+<p><span class="math display">\[
+\delta = \frac{\frac{1}{e^{x}} - \frac{1}{e^{x} + 1}}{\frac{1}{e^{x} + 1}} = \frac{e^{x} + 1}{e^{x}} - \frac{e^{x} + 1}{e^{x} + 1} = e^{- x}
+\]</span></p>
+<p><span class="math display">\[
+\delta = 5\% \rightarrow x = 2.996 \rightarrow E - E_{F} = 2.996k_{B}T
+\]</span></p>
+<p><span class="math display">\[
+\delta = 1\% \rightarrow x = 4.605 \rightarrow E - E_{F} = 4.605k_{B}T
+\]</span></p>
+<p><strong>5.</strong> 应该比较<span class="math inline">\(E_{c} - E_{F}\)</span>和<span class="math inline">\(E_{F} - E_{v}\)</span>。对应约 <span class="math inline">\(5\%\)</span> 误差时，即当<span class="math inline">\(E_{c} - E_{F} &gt; 3k_{B}T\)</span>时，则意味着所有导带中的电子占据概率均可使用玻尔兹曼近似（同理，价带亦然）。而<span class="math inline">\(E - E_{F}\)</span>中的<span class="math inline">\(E\)</span>是变量，他只能判断特定能量下是否满足近似，而不能判断整个导带的性质。带隙<span class="math inline">\(E_{g}\)</span>是导带底和价带顶的能量差，带隙大小决定了材料是半导体还是绝缘体，并不能直接作为判断玻尔兹曼近似是否成立的条件。</p>
+<p><strong>6.</strong> 令<span class="math inline">\(\Delta E = E - E_{F}\)</span>，<span class="math inline">\(x = \frac{\Delta E}{k_{B}T}\)</span></p>
+<p><span class="math display">\[
+\delta = \frac{\frac{1}{e^{- x}} - \frac{1}{e^{- x} + 1}}{\frac{1}{e^{- x} + 1}} = \frac{e^{- x} + 1}{e^{- x}} - \frac{e^{- x} + 1}{e^{- x} + 1} = e^{x}
+\]</span></p>
+<p><span class="math display">\[
+\delta = 5\% \rightarrow x = - 0.69 \rightarrow E - E_{F} = - 2.996k_{B}T
+\]</span></p>
+<p><span class="math display">\[
+\delta = 5\% \rightarrow x = - 2.30 \rightarrow E - E_{F} = - 4.605k_{B}T
+\]</span></p>
+</section>
+</section>
+<section id="sd-01-012从态密度积分到载流子浓度" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-012从态密度积分到载流子浓度">SD-01-012｜从态密度积分到载流子浓度</h3>
+<ul>
+<li><p><strong>知识点：</strong> 电子浓度、空穴浓度、有效态密度、玻尔兹曼近似</p></li>
+<li><p><strong>题型：</strong> 数学推导题</p></li>
+<li><p><strong>难度：</strong> ★★★</p></li>
+<li><p><strong>来源：</strong> 经典教材改编；Pierret，主题：热平衡载流子浓度</p></li>
+<li><p><strong>建议用时：</strong> 35分钟</p></li>
+</ul>
+<section id="题目-11" class="level4">
+<h4 class="anchored" data-anchor-id="题目-11">题目</h4>
+<p>考虑具有三维抛物线导带和价带的非简并半导体。</p>
+<ol type="1">
+<li><p>写出导带电子浓度<span class="math inline">\(n\)</span>关于导带态密度和电子占据概率的完整积分表达式。</p></li>
+<li><p>在满足玻尔兹曼近似的条件下完成该积分。</p></li>
+<li><p>将结果写成导带有效态密度<span class="math inline">\(N_{c}\)</span>、导带底<span class="math inline">\(E_{c}\)</span>和费米能级<span class="math inline">\(E_{F}\)</span>的形式。</p></li>
+<li><p>明确写出<span class="math inline">\(N_{c}\)</span>对温度和电子有效质量的依赖关系。</p></li>
+<li><p>类似地，从价带中未占据状态的数量出发推导空穴浓度<span class="math inline">\(p\)</span>。</p></li>
+<li><p>写出价带有效态密度<span class="math inline">\(N_{v}\)</span>对温度和空穴有效质量的依赖关系。</p></li>
+<li><p>将所得<span class="math inline">\(n\)</span>与<span class="math inline">\(p\)</span>相乘，分析乘积中是否仍包含费米能级。</p></li>
+<li><p>说明上述推导使用了哪些能带和统计近似。</p></li>
+</ol>
+</section>
+<section id="参考解答-11" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-11">参考解答</h4>
+<p><strong>1.</strong> 非简并半导体：费米能级深入禁带内部。</p>
+<p><span class="math display">\[
+n = \int_{E_{c}}^{+ \infty}{g_{c}(E)f(E)dE} = \frac{1}{2\pi^{2}}\left( \frac{2m_{n}^{*}}{\hbar^{2}} \right)^{3/2}\int_{E_{c}}^{+ \infty}{\left( E - E_{c} \right)^{1/2} \cdot \frac{1}{\exp\left( \frac{\left( E - E_{F} \right)}{k_{B}T} \right) + 1}dE}
+\]</span></p>
+<p><strong>2.</strong> 在非简并条件下，<span class="math inline">\(f(E) \approx e^{- \frac{\left( E - E_{F} \right)}{k_{B}T}}\)</span>，有</p>
+<p><span class="math display">\[
+n = \frac{1}{2\pi^{2}}\left( \frac{2m_{n}^{*}}{\hbar^{2}} \right)^{3/2}\int_{E_{c}}^{+ \infty}{\left( E - E_{c} \right)^{1/2} \cdot e^{\frac{E_{F} - E}{k_{B}T}}dE} = \frac{1}{2\pi^{2}}\left( \frac{2m_{n}^{*}}{\hbar^{2}} \right)^{3/2}\int_{E_{c}}^{+ \infty}{\left( E - E_{c} \right)^{1/2} \cdot e^{- \frac{\left( E_{c} - E_{F} \right) + \left( E - E_{c} \right)}{k_{B}T}}dE} = \frac{1}{2\pi^{2}}\left( \frac{2m_{n}^{*}}{\hbar^{2}} \right)^{3/2}e^{- \frac{E_{c} - E_{F}}{k_{B}T}}\int_{E_{c}}^{+ \infty}{\left( E - E_{c} \right)^{1/2} \cdot e^{- \frac{E - E_{c}}{k_{B}T}}dE}
+\]</span></p>
+<p><strong>3.</strong></p>
+<p>变量代换，令<span class="math inline">\(x = \frac{E - E_{c}}{k_{B}T}\)</span>，积分域变为<span class="math inline">\(\lbrack 0, + \infty\rbrack\)</span>，则</p>
+<p><span class="math display">\[
+n = \frac{1}{2\pi^{2}}\left( \frac{2m_{n}^{*}}{\hbar^{2}} \right)^{3/2}e^{- \frac{E_{c} - E_{F}}{k_{B}T}}\int_{0}^{+ \infty}{\left( x \cdot k_{B}T \right)^{1/2} \cdot e^{- x}\left( k_{B}T \right)dx} = \frac{1}{2\pi^{2}}\left( \frac{2m_{n}^{*}}{\hbar^{2}} \right)^{3/2}e^{- \frac{E_{c} - E_{F}}{k_{B}T}}\left( k_{B}T \right)^{3/2}\int_{0}^{+ \infty}{x^{1/2} \cdot e^{- x}dx}
+\]</span></p>
+<p>伽马函数<span class="math inline">\(\Gamma(z) = \int_{0}^{+ \infty}{t^{z - 1} \cdot e^{- t}dt}\)</span>，当<span class="math inline">\(z = \frac{3}{2}\)</span>时，<span class="math inline">\(\int_{0}^{+ \infty}{t^{1/2} \cdot e^{- t}dt} = \Gamma\left( \frac{3}{2} \right) = \frac{1}{2}\Gamma\left( \frac{1}{2} \right) = \frac{\sqrt{\pi}}{2}\)</span>。电子浓度的最终表达式为，</p>
+<p><span class="math display">\[
+n = \frac{\sqrt{\pi}}{4\pi^{2}}\left( \frac{2m_{n}^{*}}{\hbar^{2}} \right)^{3/2}e^{- \frac{E_{c} - E_{F}}{k_{B}T}}\left( k_{B}T \right)^{3/2} = \frac{1}{4}\left( \frac{2m_{n}^{*}k_{B}T}{\pi\hbar^{2}} \right)^{3/2}e^{- \frac{E_{c} - E_{F}}{k_{B}T}} = 2\left( \frac{2\pi m_{n}^{*}k_{B}T}{h^{2}} \right)^{3/2}e^{- \frac{E_{c} - E_{F}}{k_{B}T}}
+\]</span></p>
+<p><strong>4.</strong></p>
+<p><span class="math display">\[
+N_{c} = 2\left( \frac{2\pi m_{n}^{*}k_{B}T}{h^{2}} \right)^{3/2}
+\]</span></p>
+<p><strong>5.</strong></p>
+<p><span class="math display">\[
+p = 2\left( \frac{2\pi m_{p}^{*}k_{B}T}{h^{2}} \right)^{3/2}e^{- \frac{E_{F} - E_{v}}{k_{B}T}}
+\]</span></p>
+<p><strong>6.</strong></p>
+<p><span class="math display">\[
+N_{v} = 2\left( \frac{2\pi m_{p}^{*}k_{B}T}{h^{2}} \right)^{3/2}
+\]</span></p>
+<p><strong>7.</strong></p>
+<p><span class="math display">\[
+n \cdot p = 2\left( \frac{2\pi m_{n}^{*}k_{B}T}{h^{2}} \right)^{\frac{3}{2}}e^{- \frac{E_{c} - E_{F}}{k_{B}T}} \cdot 2\left( \frac{2\pi m_{p}^{*}k_{B}T}{h^{2}} \right)^{3/2}e^{- \frac{E_{F} - E_{v}}{k_{B}T}} = \ N_{c}N_{v}e^{- \frac{E_{g}}{k_{B}T}}
+\]</span></p>
+<p>相乘的结果中不包含费米能级</p>
+<p><strong>8.</strong></p>
+<p>1）各向同性抛物线能带近似，态密度表达式在能量很高时失效，但由于费米分布（玻尔兹曼近似），占据态的概率指数衰减，因此最终的电子浓度的表达式仍然具有极高的精度。</p>
+<p>2）有效质量近似</p>
+<p>3）玻尔兹曼近似</p>
+<p>4）带边附近的准粒子近似</p>
+</section>
+</section>
+<section id="sd-01-013本征费米能级为什么不一定在禁带正中央" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-013本征费米能级为什么不一定在禁带正中央">SD-01-013｜本征费米能级为什么不一定在禁带正中央</h3>
+<ul>
+<li><p><strong>知识点：</strong> 本征条件、电子—空穴对称性、本征费米能级</p></li>
+<li><p><strong>题型：</strong> 推导与概念分析题</p></li>
+<li><p><strong>难度：</strong> ★★★</p></li>
+<li><p><strong>来源：</strong> 经典教材改编；Neamen，主题：本征半导体</p></li>
+<li><p><strong>建议用时：</strong> 25分钟</p></li>
+</ul>
+<section id="题目-12" class="level4">
+<h4 class="anchored" data-anchor-id="题目-12">题目</h4>
+<p>对于本征半导体，满足</p>
+<p><span class="math display">\[
+n = p = n_{i}
+\]</span></p>
+<p>假设导带和价带均为三维抛物线能带，并可采用玻尔兹曼近似。</p>
+<ol type="1">
+<li><p>从<span class="math inline">\(n = p\)</span>出发，推导本征费米能级<span class="math inline">\(E_{i}\)</span>的表达式：将<span class="math inline">\(E_{i}\)</span>写成禁带中点和一个由<span class="math inline">\(N_{c}/N_{v}\)</span>决定的修正项之和。</p></li>
+<li><p>用电子和空穴有效质量表示该修正项。</p></li>
+<li><p>在<span class="math inline">\(m_{n}^{*} = m_{p}^{*}\)</span>时，确定<span class="math inline">\(E_{i}\)</span>的位置。</p></li>
+<li><p>当<span class="math inline">\(m_{n}^{*} &gt; m_{p}^{*}\)</span>时，判断<span class="math inline">\(E_{i}\)</span>位于禁带中点的上方还是下方。</p></li>
+<li><p>用态密度和占据概率之间的平衡解释第4问的结果。</p></li>
+<li><p>判断下列说法是否成立，并说明原因：本征半导体中电子浓度等于空穴浓度，因此导带与价带必须关于禁带中点完全对称。</p></li>
+</ol>
+</section>
+<section id="参考解答-12" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-12">参考解答</h4>
+<p><strong>1.</strong> 由<span class="math inline">\(n = p\)</span>建立关系，</p>
+<p><span class="math display">\[
+N_{c}e^{- \frac{E_{c} - E_{i}}{k_{B}T}} = N_{v}e^{- \frac{E_{i} - E_{v}}{k_{B}T}}
+\]</span></p>
+<p><span class="math display">\[
+\frac{N_{c}}{N_{v}} = e^{\frac{E_{c} - E_{i}}{k_{B}T}}e^{- \frac{E_{i} - E_{v}}{k_{B}T}}
+\]</span></p>
+<p><span class="math display">\[
+\frac{N_{c}}{N_{v}} = e^{\frac{E_{c} + E_{v} - 2E_{i}}{k_{B}T}}
+\]</span></p>
+<p><span class="math display">\[
+\frac{E_{c} + E_{v} - 2E_{i}}{k_{B}T} = \ln\frac{N_{c}}{N_{v}}
+\]</span></p>
+<p><span class="math display">\[
+E_{i} = \frac{1}{2}(E_{c} + E_{v}) - \frac{1}{2}k_{B}T\ln\frac{N_{c}}{N_{v}}
+\]</span></p>
+<p><strong>2.</strong> <span class="math inline">\(N_{c} = 2\left( \frac{2\pi m_{n}^{*}k_{B}T}{h^{2}} \right)^{3/2},N_{v} = 2\left( \frac{2\pi m_{p}^{*}k_{B}T}{h^{2}} \right)^{3/2}\)</span></p>
+<p><span class="math display">\[
+E_{i} = \frac{1}{2}\left( E_{c} + E_{v} \right) - \frac{3}{4}k_{B}T\ln\frac{m_{n}^{*}}{m_{p}^{*}}
+\]</span></p>
+<p><strong>3.</strong> <span class="math inline">\(m_{n}^{*} = m_{p}^{*}\)</span>时，</p>
+<p><span class="math display">\[
+E_{i} = \frac{1}{2}\left( E_{c} + E_{v} \right),
+\]</span></p>
+<p>恰好位于禁带中心</p>
+<p><strong>4.</strong> <span class="math inline">\(m_{n}^{*} &gt; m_{p}^{*}\)</span>时，<span class="math inline">\(\ln\frac{m_{n}^{*}}{m_{p}^{*}} &gt; 0\)</span>，因此</p>
+<p><span class="math display">\[
+E_{i} &lt; \frac{1}{2}\left( E_{c} + E_{v} \right),
+\]</span></p>
+<p>这说明<span class="math inline">\(E_{i}\)</span>位于禁带中点的下方。</p>
+<p><strong>5.</strong> 当<span class="math inline">\(m_{n}^{*} &gt; m_{p}^{*}\)</span>时，导带底的电子态密度要大于价带顶的空穴态密度，若本征费米能级位于禁带中心（与导带底和价带顶距离相等），则导带底电子的占据概率和价带顶和空穴的占据概率相等，这将导致电子的浓度大于空穴的浓度。在本征半导体中，<span class="math inline">\(n = p\)</span>，为了使浓度相等，本征费米能级将出现向下的偏移，使电子的占据概率降低，空穴的占据概率升高，从而维持两者浓度相等。</p>
+<p><strong>6.</strong> 不成立</p>
+<p>本征半导体电子浓度和空穴浓度相等是电中性的要求，但它不等价于导带和价带在几何上关于禁带中点对称。材料会通过移动本征费米能级的位置实现浓度的配平，即当电子和空穴有效质量不相等时，费米能级会偏离禁带中心（向态密度较小的一侧靠拢）。</p>
+</section>
+</section>
+<section id="sd-01-014硅的本征载流子浓度与本征费米能级" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-014硅的本征载流子浓度与本征费米能级">SD-01-014｜硅的本征载流子浓度与本征费米能级</h3>
+<ul>
+<li><p><strong>知识点：</strong> (<span class="math inline">\(n_{i}\)</span>)、有效态密度、本征费米能级</p></li>
+<li><p><strong>题型：</strong> 综合数值计算题</p></li>
+<li><p><strong>难度：</strong> ★★★</p></li>
+<li><p><strong>来源：</strong> 经典教材改编；Streetman 与 Banerjee，主题：本征载流子浓度</p></li>
+<li><p><strong>建议用时：</strong> 25分钟</p></li>
+</ul>
+<section id="题目-13" class="level4">
+<h4 class="anchored" data-anchor-id="题目-13">题目</h4>
+<p>在<span class="math inline">\(T = 300\,\mathrm{K}\)</span>时，某理想硅样品的参数为<span class="math inline">\(E_{g} = 1.12\,\mathrm{eV},\ N_{c} = 2.80 \times 10^{19}\,\mathrm{cm}^{- 3},\ N_{v} = 1.04 \times 10^{19}\,\mathrm{cm}^{- 3}\)</span></p>
+<p>假设材料处于热平衡，可采用玻尔兹曼近似，且不存在杂质和缺陷能级。</p>
+<ol type="1">
+<li><p>计算本征电子浓度<span class="math inline">\(n_{i}\)</span>。</p></li>
+<li><p>计算本征空穴浓度。</p></li>
+<li><p>计算本征费米能级相对于禁带中点的偏移量。</p></li>
+<li><p>分别计算<span class="math inline">\(E_{c} - E_{i}\)</span>和<span class="math inline">\(E_{i} - E_{v}\)</span>。</p></li>
+<li><p>判断本征费米能级更接近导带还是价带。</p></li>
+<li><p>若错误地假设<span class="math inline">\(N_{c} = N_{v}\)</span>，重新计算得到的本征费米能级位置，并比较由此造成的偏差。</p></li>
+<li><p>分析该近似对所计算本征载流子浓度是否产生影响。</p></li>
+</ol>
+</section>
+<section id="参考解答-13" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-13">参考解答</h4>
+<p><strong>1.</strong> 2.本征条件下</p>
+<p><span class="math display">\[
+n_{i} = n_{p} = \sqrt{N_{c}N_{v}}e^{- \frac{E_{g}}{2k_{B}T}} = 6.6703 \times 10^{9}\,\mathrm{cm}^{- 3}
+\]</span></p>
+<p><strong>3.</strong> 由<span class="math inline">\(n_{i} = n_{p}\)</span>建立关系，</p>
+<p><span class="math display">\[
+N_{c}e^{- \frac{E_{c} - E_{i}}{k_{B}T}} = N_{v}e^{- \frac{E_{i} - E_{v}}{k_{B}T}}
+\]</span></p>
+<p><span class="math display">\[
+\ln N_{c} - \frac{E_{c} - E_{i}}{k_{B}T} = \ln N_{v} - \frac{E_{i} - E_{v}}{k_{B}T}
+\]</span></p>
+<p><span class="math display">\[
+\frac{1}{2}k_{B}T(\ln N_{c} - \ln N_{v}) = \frac{1}{2}(E_{c} + E_{v}) - E_{i}
+\]</span></p>
+<p><span class="math display">\[
+E_{i} - \frac{1}{2}\left( E_{c} + E_{v} \right) = \frac{1}{2}k_{B}T\ln\frac{N_{v}}{N_{c}} = - 0.0128
+\]</span></p>
+<p><strong>4.</strong> <span class="math inline">\(E_{c} - E_{v} = 1.12\,\mathrm{eV}\)</span>，<span class="math inline">\(E_{i} - \frac{1}{2}\left( E_{c} + E_{v} \right) = - 0.0128\)</span>，可得</p>
+<p><span class="math display">\[
+E_{c} - E_{i} = E_{c} - E_{v} - \left( E_{i} - E_{v} \right) = 0.5728\,\mathrm{eV}
+\]</span></p>
+<p><span class="math display">\[
+E_{i} - E_{v} = E_{i} - \frac{1}{2}\left( E_{c} + E_{v} \right) + \frac{1}{2}\left( E_{c} - E_{v} \right) = 0.5472\,\mathrm{eV}
+\]</span></p>
+<p><strong>5.</strong> 本征费米能级在禁带下方<span class="math inline">\(0.0128\,\mathrm{eV}\)</span>的位置，即更靠近价带。</p>
+<p><strong>6.</strong> 若假设<span class="math inline">\(N_{c} = N_{v}\)</span>，则<span class="math inline">\(E_{i} - \frac{1}{2}\left( E_{c} + E_{v} \right) = 0\)</span>，即本征费米能级位于禁带中心，能级位置偏高了<span class="math inline">\(0.0128\,\mathrm{eV}\)</span>。如果仅在确定 <span class="math inline">\(E_{i}\)</span> 位置时使用 <span class="math inline">\(N_{c} = N_{v}\)</span>，而 <span class="math inline">\(n_{i}\)</span> 仍用真实的 <span class="math inline">\(\sqrt{N_{c}N_{v}}\)</span> 计算，则 <span class="math inline">\(n_{i}\)</span> 不受影响；如果同时用某个共同值替代真实的 <span class="math inline">\(N_{c}\)</span>、<span class="math inline">\(N_{v}\)</span>，则 <span class="math inline">\(n_{i}\)</span> 是否改变取决于该共同值是否保持乘积 <span class="math inline">\(N_{c}N_{v}\)</span> 不变。</p>
+</section>
+</section>
+<section id="sd-01-015温度对本征载流子浓度的竞争影响" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-015温度对本征载流子浓度的竞争影响">SD-01-015｜温度对本征载流子浓度的竞争影响</h3>
+<ul>
+<li><p><strong>知识点：</strong> 温度依赖、有效态密度、带隙指数因子</p></li>
+<li><p><strong>题型：</strong> 数量级与极限分析题</p></li>
+<li><p><strong>难度：</strong> ★★★★</p></li>
+<li><p><strong>来源：</strong> 原创</p></li>
+<li><p><strong>建议用时：</strong> 30分钟</p></li>
+</ul>
+<section id="题目-14" class="level4">
+<h4 class="anchored" data-anchor-id="题目-14">题目</h4>
+<p>某本征半导体的带隙近似取为常数：<span class="math inline">\(E_{g} = 1.10\,\mathrm{eV},\ N_{c}(300) = 2.50 \times \ 10^{19}\,\mathrm{cm}^{- 3},\ N_{v}(300) = 1.00 \times \ 10^{19}\,\mathrm{cm}^{- 3}\)</span></p>
+<p>假设电子和空穴有效质量均不随温度变化，因此<span class="math inline">\(N_{c}\)</span>和<span class="math inline">\(N_{v}\)</span>均正比于<span class="math inline">\(T^{\frac{3}{2}}\)</span>。</p>
+<ol type="1">
+<li><p>分别计算<span class="math inline">\(300\,\mathrm{K}\)</span>、<span class="math inline">\(400\,\mathrm{K}\)</span>和<span class="math inline">\(500\,\mathrm{K}\)</span>下的本征载流子浓度。</p></li>
+<li><p>计算<span class="math inline">\(\frac{n_{i}(400)}{n_{i}(300)}\)</span>和<span class="math inline">\(\frac{n_{i}(500)}{n_{i}(300)}\)</span></p></li>
+<li><p>将温度影响分解为：</p>
+<ul>
+<li><p>有效态密度随温度变化产生的代数因子；</p></li>
+<li><p>带隙对应的指数因子。</p></li>
+</ul></li>
+<li><p>比较上述两种因素对<span class="math inline">\(n_{i}\)</span>温度依赖的相对重要性。</p></li>
+<li><p>若在计算中忽略<span class="math inline">\(N_{c}\)</span>和<span class="math inline">\(N_{v}\)</span>的温度变化，只保留指数项，估计所得结果的相对偏差。</p></li>
+<li><p>讨论在更高温度下继续假设带隙不随温度变化是否合理，并说明这种假设可能使结果偏大还是偏小。</p></li>
+</ol>
+</section>
+<section id="参考解答-14" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-14">参考解答</h4>
+<p><strong>1.</strong> 本征载流子浓度公式</p>
+<p><span class="math display">\[
+n_{i} = n = p
+\]</span></p>
+<p><span class="math display">\[
+n_{i} = \sqrt{n*p} = \sqrt{N_{c} \cdot N_{v}e^{- \frac{E_{c} - E_{i}}{k_{B}T} - \frac{E_{i} - E_{v}}{k_{B}T}}} = \sqrt{N_{c} \cdot N_{v}e^{- \frac{E_{c} - E_{v}}{k_{B}T}}} = \sqrt{N_{c} \cdot N_{v}}e^{- \frac{E_{g}}{2k_{B}T}}
+\]</span></p>
+<p><span class="math display">\[
+n_{i}(300) = \sqrt{N_{c}(300) \cdot N_{v}(300)}e^{- \frac{E_{g}}{2k_{B}T}} = 9.0995 \times 10^{9}
+\]</span></p>
+<p><span class="math display">\[
+n_{i}(400) = \sqrt{N_{c}(400) \cdot N_{v}(400)}e^{- \frac{E_{g}}{2k_{B}T}} = 2.8603 \times 10^{12}
+\]</span></p>
+<p><span class="math display">\[
+n_{i}(500) = \sqrt{N_{c}(500) \cdot N_{v}(500)}e^{- \frac{E_{g}}{2k_{B}T}} = 9.7224 \times 10^{13}
+\]</span></p>
+<p><strong>2.</strong></p>
+<p><span class="math display">\[
+\frac{n_{i}(400)}{n_{i}(300)} = 314.34,\frac{n_{i}(500)}{n_{i}(300)} = 10684.48
+\]</span></p>
+<p><strong>3.</strong> 设参考温度为<span class="math inline">\(T_{0}\)</span>，实际温度为<span class="math inline">\(T\)</span></p>
+<p><span class="math display">\[
+n_{i}(T) = \sqrt{N_{c}\left( T_{0} \right)\left( \frac{T}{T_{0}} \right)^{\frac{3}{2}}N_{v}(T_{0})\left( \frac{T}{T_{0}} \right)^{\frac{3}{2}}}e^{- \frac{E_{g}}{2k_{B}T} + \frac{E_{g}}{2k_{B}T_{0}}}e^{- \frac{E_{g}}{2k_{B}T_{0}}} = \left( \frac{T}{T_{0}} \right)^{\frac{3}{2}}\sqrt{N_{c}\left( T_{0} \right)N_{v}(T_{0})}\left\lbrack e^{\frac{E_{g}\left( T - T_{0} \right)}{2k_{B}TT_{0}}} \right\rbrack e^{- \frac{E_{g}}{2k_{B}T_{0}}} = \sqrt{N_{c}\left( T_{0} \right)N_{v}(T_{0})}\left( \frac{T}{T_{0}} \right)^{\frac{3}{2}}e^{- \frac{E_{g}}{2k_{B}T}}
+\]</span></p>
+<p><span class="math display">\[
+\frac{n_{i}(T)}{n_{i}\left( T_{0} \right)} = \left( \frac{T}{T_{0}} \right)^{\frac{3}{2}}\exp\left\lbrack - \frac{E_{g}}{2k_{B}}\left( \frac{1}{T} - \frac{1}{T_{0}} \right) \right\rbrack
+\]</span></p>
+<p>态密度产生的代数因子为<span class="math inline">\(\left( \frac{T}{T_{0}} \right)^{\frac{3}{2}}\)</span>，带隙对应的指数因子为<span class="math inline">\(\exp\left\lbrack - \frac{E_{g}}{2k_{B}}\left( \frac{1}{T} - \frac{1}{T_{0}} \right) \right\rbrack\)</span></p>
+<p><strong>4.</strong></p>
+<p><span class="math display">\[
+\ln n_{i} = \ln\sqrt{N_{c}\left( T_{0} \right)N_{v}(T_{0})} + \frac{3}{2}\ln\frac{T}{T_{0}} - \frac{E_{g}}{2k_{B}T}
+\]</span></p>
+<p>以<span class="math inline">\(T\)</span>为变量求全微分</p>
+<p><span class="math display">\[
+\frac{dn_{i}}{n_{i}} = \frac{3}{2T}dT + \frac{E_{g}}{2k_{B}T^{2}}dT
+\]</span></p>
+<p>定量对比，在<span class="math inline">\(T = 300\,\mathrm{K}\)</span>下，</p>
+<p><span class="math display">\[
+\frac{dn_{i}}{n_{i}} = 0.005dT + 0.0705dT
+\]</span></p>
+<p>因此，对于温度引起的本征态密度变化，带隙相关的指数系数影响要远大于有效态密度相关的代数因子。</p>
+<p><strong>5.</strong></p>
+<p><span class="math display">\[
+n_{i}'(400) = n_{i}(300) \times e^{\frac{E_{g}\left( T - T_{0} \right)}{2k_{B}TT_{0}}} = 1.8578 \times 10^{12},n_{i}'(500) = n_{i}(300) \times e^{\frac{E_{g}\left( T - T_{0} \right)}{2k_{B}TT_{0}}} = 4.5186 \times 10^{13}
+\]</span></p>
+<p><span class="math display">\[
+\delta_{1} = \frac{n_{i}'(400) - n_{i}(400)}{n_{i}(400)} = - 0.3505,\delta_{1} = \frac{n_{i}'(500) - n_{i}(500)}{n_{i}(500)} = - 0.5352
+\]</span></p>
+<p>忽略有效态密度温度变化时，<span class="math inline">\(400\,\mathrm{K}\)</span> 和 <span class="math inline">\(500\,\mathrm{K}\)</span> 的结果分别低估约 <span class="math inline">\(35.0\%\)</span> 和 <span class="math inline">\(53.5\%\)</span>。</p>
+<p><strong>6.</strong> 不合理。在高温下，由于晶格膨胀和电子-声子相互作用，带隙会变窄，这导致本证载流子浓度显著增大。因此，若继续假设带隙不随温度变化，通常会低估本证载流子浓度。</p>
+</section>
+</section>
+</section>
+<section id="第四层跨领域拓展" class="level2">
+<h2 class="anchored" data-anchor-id="第四层跨领域拓展">第四层：跨领域拓展</h2>
+<section id="sd-01-016从三维半导体到二维材料的态密度" class="level3">
+<h3 class="anchored" data-anchor-id="sd-01-016从三维半导体到二维材料的态密度">SD-01-016｜从三维半导体到二维材料的态密度</h3>
+<blockquote class="blockquote">
+<p><strong>拓展题：</strong> 涉及二维电子系统，可在完成三维态密度推导后作答。</p>
+</blockquote>
+<ul>
+<li><p><strong>知识点：</strong> 二维态密度、维度效应、有效质量、应变调控</p></li>
+<li><p><strong>题型：</strong> 跨领域推导与研究型分析题</p></li>
+<li><p><strong>难度：</strong> ★★★★</p></li>
+<li><p><strong>来源：</strong> 原创；结合二维材料与应变工程背景</p></li>
+<li><p><strong>建议用时：</strong> 35分钟</p></li>
+</ul>
+<section id="题目-15" class="level4">
+<h4 class="anchored" data-anchor-id="题目-15">题目</h4>
+<p>考虑面积为 (<span class="math inline">\(A = L_{x}L_{y}\)</span>) 的理想二维半导体。导带底附近满足各向同性抛物线关系：</p>
+<p><span class="math display">\[
+E\left( \mathbf{k} \right) = E_{c} + \frac{\hbar^{2}\left( k_{x}^{2} + k_{y}^{2} \right)}{2m_{n}^{*}}
+\]</span></p>
+<p>采用周期性边界条件，并计入自旋简并。</p>
+<ol type="1">
+<li><p>从二维<span class="math inline">\(k\)</span>空间状态计数出发，推导单位面积、单位能量范围内的二维导带态密度。</p></li>
+<li><p>比较二维态密度与三维态密度在导带底附近的能量依赖。</p></li>
+<li><p>分别绘制理想二维和三维抛物线导带的态密度示意图。</p></li>
+<li><p>在非简并近似下，推导二维导带电子面密度。</p></li>
+<li><p>确定二维体系中有效态密度对温度<span class="math inline">\(T\)</span>和有效质量<span class="math inline">\(m_{n}^{*}\)</span>的依赖关系。</p></li>
+<li><p>若均匀应变使导带有效质量从<span class="math inline">\(m_{n}^{*}\)</span>增大到<span class="math inline">\(1.20m_{n}^{*}\)</span>，而导带底和费米能级相对位置保持不变，确定二维电子面密度的变化比例。</p></li>
+<li><p>对相同的有效质量变化，三维电子体浓度的变化比例是否与二维情况相同？</p></li>
+<li><p>如果应变同时改变有效质量和带隙，分析哪一类变化可能对本征载流子浓度产生更强的影响。</p></li>
+<li><p>说明将三维体材料的有效态密度公式直接用于单层二维材料可能导致哪些概念性错误。</p></li>
+</ol>
+</section>
+<section id="参考解答-15" class="level4">
+<h4 class="anchored" data-anchor-id="参考解答-15">参考解答</h4>
+<p><strong>1.</strong></p>
+<p><span class="math inline">\(k\)</span>空间中单位体积的状态数为</p>
+<p><span class="math display">\[
+\frac{1}{\frac{2\pi}{L_{x}}\frac{2\pi}{L_{y}}} = \frac{A}{4\pi^{2}}
+\]</span></p>
+<p>能量为<span class="math inline">\(E\)</span>对应的<span class="math inline">\(k\)</span>空间半径，</p>
+<p><span class="math display">\[
+E = E_{c} + \frac{\hbar^{2}\left( k_{x}^{2} + k_{y}^{2} \right)}{2m_{n}^{*}}
+\]</span></p>
+<p><span class="math display">\[
+|k| = \sqrt{k_{x}^{2} + k_{y}^{2}} = \left\lbrack \frac{2m_{n}^{*}\left( E - E_{c} \right)}{\hbar^{2}} \right\rbrack^{\frac{1}{2}}
+\]</span></p>
+<p>能量小于<span class="math inline">\(E\)</span>的状态总数，</p>
+<p><span class="math display">\[
+N = \pi|k|^{2}\frac{A}{4\pi^{2}} = \frac{A}{4\pi}\frac{2m_{n}^{*}\left( E - E_{c} \right)}{\hbar^{2}}
+\]</span></p>
+<p>考虑自旋简并，单位面积、单位能量的态密度为</p>
+<p><span class="math display">\[
+g_{2D}(E) = 2\frac{1}{A}\frac{dN}{dE} = 2\frac{1}{A}\frac{A}{4\pi}\frac{2m_{n}^{*}}{\hbar^{2}}\Theta\left( E - E_{c} \right) = \frac{m_{n}^{*}}{\pi\hbar^{2}}\Theta\left( E - E_{c} \right),
+\]</span></p>
+<p>其中<span class="math inline">\(\Theta\left( E - E_{c} \right)\)</span>为阶跃函数，当<span class="math inline">\(E &gt; E_{c}\)</span>时值为1，当<span class="math inline">\(E &lt; E_{c}\)</span>时值为0.</p>
+<p><strong>2.</strong> 三维态密度的表达式</p>
+<p><span class="math display">\[
+g_{3D}(E) = \frac{1}{2\pi^{2}}\left( \frac{2m_{n}^{*}}{\hbar^{2}} \right)^{\frac{3}{2}}\sqrt{E - E_{c}}
+\]</span></p>
+<p>二维态密度是一个与能量无关的常数，与三维态密度正比与<span class="math inline">\(\sqrt{E - E_{c}}\)</span>有显著区别。</p>
+<p><strong>3.</strong></p>
+<div id="fig-dos-2d-3d" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dos-2d-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/images/dos-2d-3d.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dos-2d-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;3: 二维与三维抛物线能带的态密度示意图
+</figcaption>
+</figure>
+</div>
+<p><strong>4.</strong> 电子面密度理解为二维的电子浓度</p>
+<p><span class="math display">\[
+n_{2D} = \int_{E_{c}}^{\infty}{g_{2D}f(E)dE}
+\]</span></p>
+<p>引入非简并近似（玻尔兹曼近似），则有</p>
+<p><span class="math display">\[
+n_{2D} = \int_{E_{c}}^{\infty}{\frac{m_{n}^{*}}{\pi\hbar^{2}}e^{- \frac{E - E_{f}}{k_{B}T}}dE} = \frac{m_{n}^{*}k_{B}T}{\pi\hbar^{2}}e^{- \frac{E_{c} - E_{f}}{k_{B}T}}
+\]</span></p>
+<p><strong>5.</strong> 有效态密度，</p>
+<p><span class="math display">\[
+N_{c,2D} = \frac{m_{n}^{*}k_{B}T}{\pi\hbar^{2}}
+\]</span></p>
+<p><strong>6.</strong></p>
+<p><span class="math display">\[
+n_{2D}' = \frac{1.20m_{n}^{*}k_{B}T}{\pi\hbar^{2}} = 1.2n_{2D}
+\]</span></p>
+<p><strong>7.</strong> 不同。二维电子面密度变化比例与有效质量变化比例成正比，而三维电子体浓度与有效质量的<span class="math inline">\(\frac{3}{2}\)</span>次方成正比，即相同幅度的有效质量波动，对三维器件造成的载流子浓度影响更大。</p>
+<p><strong>8.</strong> 二维本征载流子浓度，</p>
+<p><span class="math display">\[
+n_{i,2D} = \sqrt{N_{c,2D}N_{v,2D}}e^{- \frac{E_{c} - E_{f}}{2k_{B}T}}e^{- \frac{E_{f} - E_{v}}{2k_{B}T}} = \sqrt{N_{c,2D}N_{v,2D}}e^{- \frac{E_{g}}{2k_{B}T}} \propto \left( m_{n}^{*}m_{p}^{*} \right)^{\frac{1}{2}}e^{- \frac{E_{g}}{2k_{B}T}}
+\]</span></p>
+<p>若认为<span class="math inline">\(m_{n}^{*} \approx m_{q}^{*} \approx m^{*}\)</span>且两者的变化率相同，则<span class="math inline">\(n_{i,2D} \propto m^{*}e^{- \frac{E_{g}}{2k_{B}T}}\)</span></p>
+<p>对本征载流子浓度求全微分（也可以先求对数再求全微分），</p>
+<p><span class="math display">\[
+dn_{i,2D} = 1.0 \cdot e^{- \frac{E_{g}}{2k_{B}T}}dm^{*} - \frac{1}{2k_{B}T}m^{*}e^{- \frac{E_{g}}{2k_{B}T}}dE_{g}
+\]</span></p>
+<p><span class="math display">\[
+\frac{dn_{i,2D}}{n_{i,2D}} = \mathbf{1.0} \cdot \frac{dm^{*}}{m^{*}} - \frac{\mathbf{1}}{\mathbf{2}\mathbf{k}_{\mathbf{B}}\mathbf{T}}dE_{g}
+\]</span></p>
+<p>三维本征载流子浓度，</p>
+<p><span class="math display">\[
+n_{i,3D} = \sqrt{N_{c,3D}N_{v,3D}}e^{- \frac{E_{g}}{k_{B}T}} \propto \left( m_{n}^{*}m_{p}^{*} \right)^{\frac{3}{4}}e^{- \frac{E_{g}}{k_{B}T}} \propto \left( m^{*} \right)^{\frac{3}{2}}e^{- \frac{E_{g}}{k_{B}T}}
+\]</span></p>
+<p>对本征载流子浓度求全微分，</p>
+<p><span class="math display">\[
+dn_{i,3D} = 1.5 \cdot \left( m^{*} \right)^{\frac{1}{2}}e^{- \frac{E_{g}}{2k_{B}T}}dm^{*} - \frac{1}{2k_{B}T}\left( m^{*} \right)^{\frac{3}{2}}e^{- \frac{E_{g}}{2k_{B}T}}dE_{g}
+\]</span></p>
+<p><span class="math display">\[
+\frac{dn_{i,3D}}{n_{i,3D}} = \frac{\mathbf{3}}{\mathbf{2}}\cdot \frac{dm^{*}}{m^{*}} - \frac{\mathbf{1}}{\mathbf{2}\mathbf{k}_{\mathbf{B}}\mathbf{T}}dE_{g}
+\]</span></p>
+<p>定量对比有效质量和能隙变化对本征载流子浓度的影响，</p>
+<p>在<span class="math inline">\(T = 300\,\mathrm{K}\)</span>下，<span class="math inline">\(k_{B}T \approx 0.026\,\mathrm{eV}\)</span>，则</p>
+<p><span class="math display">\[
+2D:\frac{dn_{i,2D}}{n_{i,2D}} = \mathbf{1.0} \cdot \frac{dm^{*}}{m^{*}} - \mathbf{19.33}dE_{g}
+\]</span></p>
+<p><span class="math display">\[
+3D:\frac{dn_{i,3D}}{n_{i,3D}} = \mathbf{1.5}\cdot \frac{dm^{*}}{m^{*}} - \mathbf{19.33}dE_{g}
+\]</span></p>
+<p>这说明带隙变化具有较强的指数敏感性，但是否”更强”仍需比较实际的 <span class="math inline">\(dE_{g}\)</span> 与相对质量变化<span class="math inline">\(\frac{dm^{*}}{m^{*}}\)</span>。</p>
+<p><strong>9.</strong></p>
+<p>1）量纲错误，二维中的电子浓度是电子面密度，三维中是电子体浓度。</p>
+<p>2）能量依赖关系错误，二维中有效态密度是与能量无关的常数，而三维中态密度与能量的平方根成正比。</p>
+<p>3）温度依赖关系错误，二维中有效态密度与温度的依赖关系是1次方，三维中是<span class="math inline">\(\frac{3}{2}\)</span>次方。</p>
+<p>4）有效质量依赖错误，二维有效态密度<span class="math inline">\(N_{c,2D} \propto T\)</span>，三维<span class="math inline">\(N_{c,3D} \propto T^{\frac{3}{2}}\)</span>。</p>
+</section>
+</section>
+</section>
+</section>
+<section id="题目覆盖检查表" class="level1">
+<h1>题目覆盖检查表</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 22%">
+<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>题号</strong></th>
+<th style="text-align: left;"><strong>核心知识点</strong></th>
+<th style="text-align: left;"><strong>题型</strong></th>
+<th style="text-align: left;"><strong>难度</strong></th>
+<th style="text-align: left;"><strong>主要训练目标</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SD-01-001</td>
+<td style="text-align: left;">能带曲率与有效质量</td>
+<td style="text-align: left;">概念辨析</td>
+<td style="text-align: left;">★</td>
+<td style="text-align: left;">建立曲率、质量和动力学响应的联系</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SD-01-002</td>
+<td style="text-align: left;">有效质量计算</td>
+<td style="text-align: left;">数值计算</td>
+<td style="text-align: left;">★★</td>
+<td style="text-align: left;">从实验色散数据提取有效质量</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SD-01-003</td>
+<td style="text-align: left;">空穴的等效描述</td>
+<td style="text-align: left;">概念推导</td>
+<td style="text-align: left;">★★</td>
+<td style="text-align: left;">理解空穴的电荷、速度和动量定义</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SD-01-004</td>
+<td style="text-align: left;">基础概念误区</td>
+<td style="text-align: left;">判断纠错</td>
+<td style="text-align: left;">★★</td>
+<td style="text-align: left;">识别有效质量、空穴和费米能级误区</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SD-01-005</td>
+<td style="text-align: left;">直接与间接带隙</td>
+<td style="text-align: left;">能带图分析</td>
+<td style="text-align: left;">★★</td>
+<td style="text-align: left;">联系能量与晶体动量守恒</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SD-01-006</td>
+<td style="text-align: left;">带间光学跃迁</td>
+<td style="text-align: left;">定性综合</td>
+<td style="text-align: left;">★★</td>
+<td style="text-align: left;">比较直接和间接跃迁条件</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SD-01-007</td>
+<td style="text-align: left;">三维态密度</td>
+<td style="text-align: left;">数学推导</td>
+<td style="text-align: left;">★★★</td>
+<td style="text-align: left;">掌握 k 空间状态计数方法</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SD-01-008</td>
+<td style="text-align: left;">能量区间内状态数</td>
+<td style="text-align: left;">数值计算</td>
+<td style="text-align: left;">★★★</td>
+<td style="text-align: left;">运用态密度积分并理解非均匀分布</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SD-01-009</td>
+<td style="text-align: left;">各向异性与多能谷</td>
+<td style="text-align: left;">推导分析</td>
+<td style="text-align: left;">★★★</td>
+<td style="text-align: left;">区分曲率质量、DOS质量和简并度</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SD-01-010</td>
+<td style="text-align: left;">费米分布</td>
+<td style="text-align: left;">数值与图像</td>
+<td style="text-align: left;">★★</td>
+<td style="text-align: left;">理解费米分布的热展宽</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SD-01-011</td>
+<td style="text-align: left;">玻尔兹曼近似</td>
+<td style="text-align: left;">模型判断</td>
+<td style="text-align: left;">★★★</td>
+<td style="text-align: left;">定量评估近似误差与适用范围</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SD-01-012</td>
+<td style="text-align: left;">载流子浓度积分</td>
+<td style="text-align: left;">数学推导</td>
+<td style="text-align: left;">★★★</td>
+<td style="text-align: left;">建立DOS、占据概率与浓度的联系</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SD-01-013</td>
+<td style="text-align: left;">本征费米能级</td>
+<td style="text-align: left;">推导与辨析</td>
+<td style="text-align: left;">★★★</td>
+<td style="text-align: left;">理解费米能级偏离禁带中点的原因</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SD-01-014</td>
+<td style="text-align: left;">本征硅载流子统计</td>
+<td style="text-align: left;">综合计算</td>
+<td style="text-align: left;">★★★</td>
+<td style="text-align: left;">计算 <span class="math inline">\(n_i\)</span> 和本征费米能级</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SD-01-015</td>
+<td style="text-align: left;">本征浓度的温度依赖</td>
+<td style="text-align: left;">数量级分析</td>
+<td style="text-align: left;">★★★★</td>
+<td style="text-align: left;">区分代数温度项和指数温度项</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SD-01-016</td>
+<td style="text-align: left;">二维态密度与应变</td>
+<td style="text-align: left;">拓展推导</td>
+<td style="text-align: left;">★★★★</td>
+<td style="text-align: left;">将体半导体统计推广至二维材料</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已复制");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已复制");
+        tooltip = new bootstrap.Tooltip(button,
+          { trigger: "manual",
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined;
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              }
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            }
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

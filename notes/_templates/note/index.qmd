@@ -31,8 +31,8 @@ print(x[:3])
 
 # 图片示例
 
-将图片放在当前笔记附近的相对路径中，例如 `notes/figures/example.png`，再按下面方式引用。
+将图片放在当前笔记附近的相对路径中，例如 `assets/images/example.png`，再按下面方式引用。
 
 <!--
-![图片说明](figures/example.png)
+![图片说明](assets/images/example.png)
 -->

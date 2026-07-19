@@ -1,0 +1,12 @@
+# Local note attachments and authoring files that are not part of the website.
+notes/**/attachments/**
+notes/**/*.docx
+notes/**/*.ppt
+notes/**/*.pptx
+notes/**/*.xlsx
+notes/**/*.nb
+
+# Microsoft Office temporary files.
+~$*.docx
+~$*.pptx
+~$*.xlsx
